@@ -6,24 +6,24 @@ const EmbroideredPatchApplicationsTimeline = () => {
     const applications = [
         {
             title: 'Military & Tactical Units',
-            category: 'Uniforms & Gear',
-            description: 'Represent units, rank insignia, and mission accomplishments with ultra-durable embroidered patches built for tactical field gear and service uniforms.',
-            image: '/images/embroidered-military.png',
-            align: 'right'
+            category: 'UNIFORMS & GEAR',
+            description: 'Represent units, ranks, insignia, missions, and accomplishments with custom military patches built for tactical gear, uniforms, and service apparel.',
+            image: 'images/applications/Embroidered/military.png',
+            align: 'right' // Text left, Image right
         },
         {
             title: 'Fashion & Biker Clubs',
-            category: 'Apparel & Jackets',
-            description: 'Make a bold statement on leather vests, denim jackets, and streetwear lines with high-stitch density and thick merrowed borders.',
-            image: '/images/embroidered-apparel.png',
-            align: 'left'
+            category: 'APPAREL & JACKETS',
+            description: 'Add a bold statement to jackets, denim, streetwear, and club apparel with custom embroidered patches featuring detailed designs and durable stitching.',
+            image: '/images/applications/Embroidered/BIKE.png',
+            align: 'left' // Image left, Text right
         },
         {
             title: 'School, Sports & Athletics',
-            category: 'Varsity & Teamwear',
-            description: 'Outfit varsity jackets, sports jerseys, and spirit gear with custom personalized emblems showcasing school mascots and championship wins.',
-            image: '/images/embroidered-athletics.png',
-            align: 'right'
+            category: 'VARSITY & TEAMWEAR',
+            description: 'Show team spirit with custom patches for varsity jackets, jerseys, sports bags, school apparel, and championship merchandise. Create designs that represent your team and achievements.',
+            image: '/images/applications/Embroidered/sports.png',
+            align: 'right' // Text left, Image right
         }
     ];
 
@@ -69,6 +69,7 @@ const EmbroideredPatchApplicationsTimeline = () => {
                     max-width: 1100px;
                     margin: 0 auto;
                     padding: 0 24px;
+                    position: relative;
                 }
 
                 .header-block {
@@ -112,7 +113,7 @@ const EmbroideredPatchApplicationsTimeline = () => {
                     line-height: 1.6;
                 }
 
-                /* Modern Zig-Zag Layout */
+                /* Modern Zig-Zag Layout with Continuous Center Line */
                 .timeline-wrapper {
                     display: flex;
                     flex-direction: column;
@@ -120,11 +121,25 @@ const EmbroideredPatchApplicationsTimeline = () => {
                     position: relative;
                 }
 
+                .timeline-wrapper::before {
+                    content: '';
+                    position: absolute;
+                    top: 20px;
+                    bottom: 20px;
+                    left: 50%;
+                    width: 2px;
+                    background: #cbd5e1;
+                    transform: translateX(-50%);
+                    z-index: 1;
+                }
+
                 .timeline-item {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
-                    gap: 40px;
+                    gap: 60px;
                     align-items: center;
+                    position: relative;
+                    z-index: 2;
                 }
 
                 .timeline-item.reverse {
@@ -136,9 +151,16 @@ const EmbroideredPatchApplicationsTimeline = () => {
                 }
 
                 @media (max-width: 768px) {
+                    .timeline-wrapper::before {
+                        display: none;
+                    }
                     .timeline-item, .timeline-item.reverse {
                         grid-template-columns: 1fr;
                         direction: ltr;
+                        gap: 30px;
+                    }
+                    .connector-line, .connector-dot {
+                        display: none;
                     }
                 }
 
@@ -183,25 +205,65 @@ const EmbroideredPatchApplicationsTimeline = () => {
                     margin: 0;
                 }
 
+                /* Seamless Connecting Line & Centered Dot spanning to the center axis */
+                .connector-line {
+                    position: absolute;
+                    right: -30px;
+                    top: 50%;
+                    width: 30px;
+                    height: 2px;
+                    background: repeating-linear-gradient(90deg, #dc2626, #dc2626 4px, transparent 4px, transparent 8px);
+                    transform: translateY(-50%);
+                    z-index: 3;
+                }
+
+                .timeline-item.reverse .connector-line {
+                    right: auto;
+                    left: -30px;
+                }
+
+                .connector-dot {
+                    position: absolute;
+                    right: -34px;
+                    top: 50%;
+                    width: 10px;
+                    height: 10px;
+                    background: #dc2626;
+                    border-radius: 50%;
+                    transform: translateY(-50%);
+                    box-shadow: 0 0 8px rgba(220, 38, 38, 0.6);
+                    z-index: 4;
+                }
+
+                .timeline-item.reverse .connector-dot {
+                    right: auto;
+                    left: -34px;
+                }
+
+                /* Transparent Image Styling */
                 .image-container {
-                    border-radius: 20px;
-                    overflow: hidden;
-                    border: 1px solid #cbd5e1;
-                    background: #ffffff;
-                    height: 280px;
-                    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: transparent;
+                    border: none;
+                    box-shadow: none;
+                    padding: 10px;
+                    position: relative;
                 }
 
                 .image-container img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
+                    width: auto;
+                    max-width: 100%;
+                    max-height: 280px;
+                    object-fit: contain;
                     transition: transform 0.5s ease;
+                    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08));
                 }
 
                 .content-card:hover + .image-container img,
                 .image-container:hover img {
-                    transform: scale(1.03);
+                    transform: scale(1.05);
                 }
             `}</style>
 
@@ -212,7 +274,7 @@ const EmbroideredPatchApplicationsTimeline = () => {
                         Engineered for Every <span className="brand-red">Industry & Style</span>
                     </h2>
                     <p className="section-subtitle">
-                        Discover how our high-density embroidered emblems elevate uniforms, fashion apparel, and custom gear across multiple sectors.
+                        Our <a href="/Embroidered-Patches"><b>custom embroidered patches</b></a> are designed for a wide range of industries and styles. From military uniforms and tactical gear to fashion, biker clubs, schools, sports teams, and branded apparel, we create patches with detailed embroidery and durable construction.
                     </p>
                 </div>
 
@@ -223,7 +285,12 @@ const EmbroideredPatchApplicationsTimeline = () => {
                                 <span className="card-category">{app.category}</span>
                                 <h3 className="card-title">{app.title}</h3>
                                 <p className="card-desc">{app.description}</p>
+                                
+                                {/* Connector line & dot linking the card to the center timeline */}
+                                <div className="connector-line"></div>
+                                <div className="connector-dot"></div>
                             </div>
+
                             <div className="image-container">
                                 <img src={app.image} alt={app.title} />
                             </div>

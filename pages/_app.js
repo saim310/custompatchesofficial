@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.css';
 import '../styles/style.css';
 import '../styles/responsive.css';
+import FloatingContactWidget from '../components/FloatingContactWidget';
 
 function MyApp({ Component, pageProps }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+    <FloatingContactWidget/>
       <Component {...pageProps} />
       <RequirementModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>

@@ -4,29 +4,29 @@ const ServiceSection = (props) => {
     const steps = [
         {
             id: "01",
-            title: "Pitch Your Concept",
-            description: "Sketch it, scan it, or simply describe it. Share your vision, and we'll refine the details of size, material, and backing to match your vibe.",
+            title: "Share Your Concept",
+            description: "Tell us about your patch idea and share your logo, artwork, or concept. Our team will review your requirements and help you choose the right patch style, size, colors, and backing.",
             iconClass: "fi flaticon-idea", 
             accentColor: "rgba(255, 107, 107, 0.3)" // Coral
         },
         {
             id: "02",
-            title: "Refine & Lock In",
-            description: "Review a stunning digital render. We iterate—for free—until your custom patch or pin proof is absolutely flawless before production.",
+            title: "Refine & Approve",
+            description: "We create a digital preview of your custom patch based on your requirements. Review the design, request adjustments, and approve it once everything looks exactly the way you want.",
             iconClass: "fi flaticon-files-and-folders",
             accentColor: "rgba(78, 205, 196, 0.3)" // Turquoise
         },
         {
             id: "03",
             title: "Precision Crafting",
-            description: "Once locked, our skilled artisans and state-of-the-art tech transform raw thread, PVC, or metal into high-definition realities.",
+            description: "Once your design is approved, our skilled team begins crafting your custom patches using quality materials and precise techniques for a clean, professional, and durable finish.",
             iconClass: "fi flaticon-artist",
             accentColor: "rgba(255, 202, 58, 0.3)" // Yellow
         },
         {
             id: "04",
-            title: "Rapid Deployment",
-            description: "Fresh off the line and straight to you. We ship fast (7–10 days), delivering your custom gear packaged and ready to deploy.",
+            title: "Fast Delivery",
+            description: "After production and quality checking, your finished custom patches are carefully packaged and prepared for delivery. Get your order ready to use, wear, or share with your customers.",
             iconClass: "fi flaticon-man",
             accentColor: "rgba(106, 76, 147, 0.3)" // Purple
         },
@@ -106,7 +106,7 @@ const ServiceSection = (props) => {
                                 HOW WE WORK
                             </span>
                             <h2 style={{ fontSize: '42px', fontWeight: '800', lineHeight: '1.2', color: '#111', textTransform: 'none', fontStyle: 'italic', letterSpacing: '-1px' }}>
-                                From <span style={{ textDecoration: 'underline solid #ff6b6b' }}>Sketch</span> to <span style={{ textDecoration: 'underline solid #ff6b6b' }}>Swag</span>.
+                                From <span style={{ textDecoration: 'underline solid #ff6b6b' }}>Design</span> to <span style={{ textDecoration: 'underline solid #ff6b6b' }}>To Custom Patch</span>.
                             </h2>
                         </div>
                     </div>
@@ -187,7 +187,7 @@ const ServiceSection = (props) => {
                 <div className="row text-center" style={{ marginTop: '50px' }}>
                     <div className="col-12">
                         <p style={{ color: '#666' }}>Ready to launch your project?</p>
-                        <a href="#contact" style={{ 
+                        <a href="/ContactPage" style={{ 
                             display: 'inline-block',
                             backgroundColor: '#ff6b6b', 
                             color: '#fff', 

@@ -9,6 +9,7 @@ import LatestBlog from '../components/LatestNews'
 import Footer from '../components/Footer'
 import Head from 'next/head'
 import HomePage3 from './HomePage3';
+import FloatingContactWidget from '../components/FloatingContactWidget';
 
 
 
@@ -24,6 +25,7 @@ const HomePage =() => {
             <AboutHome/>
             <PorfolioSectionHome/>
             <TestSlider/>
+          
             <ContactArea/>
             <LatestBlog/>
             <Footer/>

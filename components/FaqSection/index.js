@@ -4,28 +4,28 @@ const FaqSection = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const containerRef = useRef(null);
 
-    const faqs = [
-        {
-            question: "What is the minimum order quantity (MOQ) for custom patches?",
-            answer: "Our minimum order quantity starts as low as 10 to 50 pieces depending on the patch style (embroidered, PVC, woven, or leather). We also offer significant volume discounts for larger orders."
-        },
-        {
-            question: "How long does production and shipping take?",
-            answer: "Standard production takes approximately 7 to 9 business days after digital proof approval. Express production options (5 to 7 days) and worldwide tracked shipping are available upon request."
-        },
-        {
-            question: "Are there any setup, digitizing, or hidden artwork fees?",
-            answer: "No. We offer 100% free digital proofs, free artwork setup, and zero digitizing charges. You only pay for the patches and shipping."
-        },
-        {
-            question: "What backing options do you provide?",
-            answer: "We offer Iron-On (Heat Seal), Hook & Loop (Velcro), Sew-On (No Backing), Peel & Stick (Adhesive), and Magnetic Backings."
-        },
-        {
-            question: "What file formats can I upload for my design?",
-            answer: "We accept high-resolution PNG, JPG, PDF, AI, PSD, SVG, and EPS files. If you only have a rough sketch, our graphic design team can help digitize it for free."
-        }
-    ];
+const faqs = [
+    {
+        question: "What Is the Minimum Order Quantity (MOQ) for Custom Patches?",
+        answer: "Our custom patch minimum order quantity typically starts from 10 to 50 pieces, depending on the patch type, material, and design. Larger quantities may also qualify for better bulk pricing."
+    },
+    {
+        question: "How Long Does Production and Shipping Take?",
+        answer: "Production time depends on the patch type, order quantity, and design complexity. Once your design is approved, we’ll provide an estimated production and shipping timeline before starting your order."
+    },
+    {
+        question: "Are There Any Setup, Digitizing, or Hidden Artwork Fees?",
+        answer: "We keep our pricing transparent. Any digitizing, setup, or artwork-related costs will be clearly communicated before production, so you know the total cost in advance."
+    },
+    {
+        question: "What Backing Options Do You Provide?",
+        answer: "We offer several custom patch backing options, including iron-on, sew-on, adhesive, and hook-and-loop (Velcro) backing. The best option depends on how and where you plan to use your patches."
+    },
+    {
+        question: "What File Formats Can I Upload for My Design?",
+        answer: "You can provide common design formats such as PNG, JPG, PDF, AI, EPS, and SVG. High-resolution or vector artwork is preferred for creating accurate and detailed custom patches."
+    }
+];
 
     const toggleAccordion = (index) => {
         setActiveIndex(activeIndex === index ? null : index);

@@ -216,10 +216,8 @@ const CompareSection = () => {
                         We Turn it into an Embroidered Patch
                     </h2>
                     <p className="description">
-                        Once you upload your design, our expert team digitizes it using state-of-the-art embroidery software to ensure every stitch is clean, precise, and production-ready. You'll have the option to review a proof before we move forward, so you know exactly how your patch will look before it's made.
-                    </p>
+Upload your artwork, logo, or idea, and our team will transform it into a high-quality <a href="/Embroidered-Patches"><b>custom embroidered patch</b></a>. We carefully review every detail, including colors, stitching, size, and shape, to create a clean and accurate design. Before production, you’ll receive a digital proof so you can review and approve your custom patch with confidence.</p>
                 </div>
-
                 {/* Right Interactive Image Slider Card */}
                 <div className="comparison-card">
                     <div className="badge badge-left">Your Design</div>

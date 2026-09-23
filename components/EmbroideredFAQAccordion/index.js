@@ -4,28 +4,52 @@ const EmbroideredFAQAccordion = () => {
     const [activeIndex, setActiveIndex] = useState(null);
     const sectionRef = useRef(null);
 
-    const faqs = [
-        {
-            question: 'What is the minimum order quantity (MOQ) for embroidered patches?',
-            answer: 'We accommodate orders of all scales, ranging from small-batch runs for independent brands to large-scale commercial production with flexible pricing tiers.'
-        },
-        {
-            question: 'Are there any setup or digitization fees?',
-            answer: 'No! We provide completely free artwork setup and professional vector digitization so you never pay extra upfront fees to bring your custom design to life.'
-        },
-        {
-            question: 'What backing options should I choose for my apparel?',
-            answer: 'Sew-on backings provide the most permanent hold for heavy garments, iron-on options offer quick thermal application, and Velcro hook-and-loop systems are ideal for tactical gear and interchangeable uniforms.'
-        },
-        {
-            question: 'What file formats do you accept for custom artwork?',
-            answer: 'We accept high-resolution vector files such as AI, EPS, PDF, as well as standard image formats like PNG and JPEG. Our team will optimize your file for high-density thread weaving.'
-        },
-        {
-            question: 'How long does production and delivery take?',
-            answer: 'Standard production cycles typically complete within a few business days, followed by prompt delivery straight to your doorstep. Expedited options are also available for rush orders.'
-        }
-    ];
+const faqs = [
+    {
+        question: 'What Are Custom Embroidered Patches?',
+        answer: 'Custom embroidered patches are fabric patches created with stitched threads to display logos, names, artwork, symbols, or other designs.'
+    },
+    {
+        question: 'Can I Create My Own Embroidered Patch Design?',
+        answer: 'Yes, you can provide your logo, artwork, text, or idea. We can turn your design into a personalized embroidered patch.'
+    },
+    {
+        question: 'What Can I Use Embroidered Patches For?',
+        answer: 'Custom embroidered patches are ideal for jackets, uniforms, hats, bags, sportswear, clubs, businesses, schools, and organizations.'
+    },
+    {
+        question: 'What Backing Options Are Available for Embroidered Patches?',
+        answer: 'We offer different backing options, including iron-on, sew-on, adhesive, and hook-and-loop backing.'
+    },
+    {
+        question: 'Can You Make Custom Logo Embroidered Patches?',
+        answer: 'Yes, we can create custom embroidered logo patches in different shapes, sizes, colors, and designs to match your brand.'
+    },
+    {
+        question: 'Are Embroidered Patches Durable?',
+        answer: 'Yes. High-quality threads and proper stitching help make embroidered patches durable and suitable for regular use.'
+    },
+    {
+        question: 'What is the minimum order quantity (MOQ) for embroidered patches?',
+        answer: 'We accommodate orders of all scales, ranging from small-batch runs for independent brands to large-scale commercial production with flexible pricing tiers.'
+    },
+    {
+        question: 'Are there any setup or digitization fees?',
+        answer: 'No! We provide completely free artwork setup and professional vector digitization so you never pay extra upfront fees to bring your custom design to life.'
+    },
+    {
+        question: 'What backing options should I choose for my apparel?',
+        answer: 'Sew-on backings provide the most permanent hold for heavy garments, iron-on options offer quick thermal application, and Velcro hook-and-loop systems are ideal for tactical gear and interchangeable uniforms.'
+    },
+    {
+        question: 'What file formats do you accept for custom artwork?',
+        answer: 'We accept high-resolution vector files such as AI, EPS, PDF, as well as standard image formats like PNG and JPEG. Our team will optimize your file for high-density thread weaving.'
+    },
+    {
+        question: 'How long does production and delivery take?',
+        answer: 'Standard production cycles typically complete within a few business days, followed by prompt delivery straight to your doorstep. Expedited options are also available for rush orders.'
+    }
+];
 
     const toggleAccordion = (index) => {
         setActiveIndex(activeIndex === index ? null : index);

@@ -14,6 +14,8 @@ import FaqSection from '../../components/FaqSection';
 import Footer2 from '../../components/Footer2'
 import Head from 'next/head'
 import CompareSection from '../../components/compare-section';
+import FloatingContactWidget from '../../components/FloatingContactWidget';
+
 
 const HomePage3 = () => {
     return(
@@ -23,18 +25,18 @@ const HomePage3 = () => {
             </Head>
             <Navbar3/>
             <Hero3 />
+           
             <AboutFeatures/>
             <ServiceSection serviceclass={'wpo-service-area-3 section-padding'}/>
-            
             <PatchTypesSection/>
             <CompareSection/>
             <GearVisualizerSection/>
             <PatchEstimatorLight/>
             <WhyChooseUsSection/>
-            
-          
-
-            <ContactArea contactclass={'wpo-contact-area3'}/>
+         
+            <div id="contact-section">
+    <ContactArea contactclass={'wpo-contact-area3'} />
+</div>
             <TestSlider2 testclass={'wpo-testimonial-area-3'}/>
             <FaqSection/>
             <Footer2 Ftclass={'wpo-footer-area3'} />

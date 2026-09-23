@@ -1,22 +1,39 @@
 import React, {Fragment} from 'react';
-import Navbar5 from '../../components/Navbar5'
-import Breadcrumbs from '../../components/Breadcrumbs'
+import MySkill from '../../components/MySkill'
 import Footer2 from '../../components/Footer2'
-import PorfolioSection9 from '../../components/PorfolioSection9'
 import Head from 'next/head'
+import ChenillePatchApplicationsTimeline from '../../components/ChenillePatchApplicationsTimeline';
+import Navbar3 from '../../components/Navbar3';
+import ChenilleHeaderBanner from '../../components/ChenilleHeaderBanner';
+import ChenillePatchFinishingTabs from '../../components/ChenillePatchFinishingTabs';
+import AboutValuesSection from '../../components/AboutValuesSection';
+import ContactArea from '../../components/ContactArea';
+import ChenilleWhyChooseUsSection from '../../components/ChenilleWhyChooseUsSection';
+import Testimonial2 from '../../components/Testimonial2';
+import ChenilleGalleryShowcase from '../../components/ChenilleGalleryShowcase';
+import ChenilleFAQAccordion from '../../components/ChenilleFAQAccordion';
 
-
-const PorfolioGridCro =() => {
+const ChenillePatches =() => {
     return(
         <Fragment>
             <Head>
-                <title>Portfolio Cro</title>
+                <title>Chenille Patches</title>
             </Head>
-            <Navbar5/>
-            <Breadcrumbs pageTitle={'Portfolio'} pageSub={'Portfolio'}/>
-            <PorfolioSection9/>
-            <Footer2 Ftclass={'wpo-footer-area3'}/>
+            <Navbar3/>
+            <ChenilleHeaderBanner/>
+            <ChenillePatchApplicationsTimeline/>
+            <ChenillePatchFinishingTabs/>
+            <ChenilleWhyChooseUsSection/>
+            <ChenilleGalleryShowcase/>
+            <MySkill/>
+            <AboutValuesSection/>
+              <ContactArea contactclass={'wpo-contact-area3'}/>
+              <Testimonial2/>
+              <ChenilleFAQAccordion/>
+            <Footer2 Ftclass={'wpo-footer-area3'} />
+          
+
         </Fragment>
     )
 };
-export default PorfolioGridCro;
+export default ChenillePatches;

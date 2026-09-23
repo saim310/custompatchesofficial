@@ -1,21 +1,39 @@
 import React, {Fragment} from 'react';
-import Navbar5 from '../../components/Navbar5'
-import Breadcrumbs from '../../components/Breadcrumbs'
+import MySkill from '../../components/MySkill'
 import Footer2 from '../../components/Footer2'
-import Portfolio2 from '../../components/PorfolioSection7'
 import Head from 'next/head'
+import PVCPatchApplicationsTimeline from '../../components/PVCPatchApplicationsTimeline';
+import Navbar3 from '../../components/Navbar3';
+import PVCHeaderBanner from '../../components/PVCHeaderBanner';
+import PVCPatchFinishingTabs from '../../components/PVCPatchFinishingTabs';
+import AboutValuesSection from '../../components/AboutValuesSection';
+import ContactArea from '../../components/ContactArea';
+import PVCWhyChooseUsSection from '../../components/PVCWhyChooseUsSection';
+import Testimonial2 from '../../components/Testimonial2';
+import PVCGalleryShowcase from '../../components/PVCGalleryShowcase';
+import PVCFAQAccordion from '../../components/PVCFAQAccordion';
 
-const PorfolioGrid2 =() => {
+const PVCPatches =() => {
     return(
         <Fragment>
             <Head>
-                <title>Portfolio 2</title>
+                <title>PVC Patches</title>
             </Head>
-            <Navbar5/>
-            <Breadcrumbs pageTitle={'Portfolio'} pageSub={'Portfolio'}/>
-            <Portfolio2/>
-            <Footer2 Ftclass={'wpo-footer-area3'}/>
+            <Navbar3/>
+            <PVCHeaderBanner/>
+            <PVCPatchApplicationsTimeline/>
+            <PVCPatchFinishingTabs/>
+            <PVCWhyChooseUsSection/>
+            <PVCGalleryShowcase/>
+            <MySkill/>
+            <AboutValuesSection/>
+              <ContactArea contactclass={'wpo-contact-area3'}/>
+              <Testimonial2/>
+              <PVCFAQAccordion/>
+            <Footer2 Ftclass={'wpo-footer-area3'} />
+          
+
         </Fragment>
     )
 };
-export default PorfolioGrid2;
+export default PVCPatches;

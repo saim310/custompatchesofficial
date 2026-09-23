@@ -117,12 +117,9 @@ const Hero3 = ( props ) => {
                             className="col col-lg-6 col-md-12 slide-caption hero-content-card"
                             ref={heroRef}
                         >
-                            <h2>Premium Custom Patches Crafted by Custom Patches Official</h2>
+                            <h2>Custom Patches Design Your Own Personalized Patches</h2>
                             <span>
-                                Elevate your apparel with high-grade custom patches built for durability, detail, and style. At Custom Patches Official, we offer everything from flexible PVC and rich genuine leather to detailed embroidered and woven patches tailored to your exact specifications.
-
-                                Perfect for uniforms, denim jackets, caps, and backpacks. Whether you need patches for a fashion brand, corporate team, motorcycle club, or military unit, we deliver precision craftsmanship, vibrant detail, and rapid order fulfillment.
-                            </span>
+<a href="/custom-products"><b>Custom patches</b></a> are a great way to showcase your brand, team, club, or personal style. We create high-quality <a href="/custom-products"><b>custom patches online</b></a> in different styles, including <a href="/Embroidered-Patches"><b>custom embroidered patches</b></a>, <a href="/Woven-Patches"><b>custom woven patches</b></a>, <a href="/Chenille-Patches"><b>custom chenille patches</b></a>, <a href="/PVC-Patches"><b>custom PVC patches</b></a>, <a href="/Bullet-Sublimated-Patches"><b>custom sublimated patches</b></a>, and <a href="/Leather-Patches"><b>custom leather patches</b></a>. You can choose your preferred shape, size, colors, design, and backing option. Whether you need patches for clothing, uniforms, jackets, bags, businesses, or events, our <a href="/Custom-Products"><b>personalized patches</b></a> are designed to provide a professional and distinctive look.                            </span>
                             <div>
                                 <Link legacyBehavior href="/AboutPage"><a className="theme-btn">More About</a></Link>
                                 <Link legacyBehavior href="/ContactPage"><a className="theme-btn-s2">Contact Us</a></Link>

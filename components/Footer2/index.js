@@ -9,7 +9,7 @@ const Footer2 = (props) => {
                     <div className="row">
                         <div className="col-lg-2 col-md-3 col-sm-3 col-12">
                             <div className="footer-logo">
-                                 <img src='images/logo2.png' alt=""/>
+                                 <img src='images/patcheslogo2.png' alt=""/>
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-9 col-sm-9 col-12">
@@ -35,7 +35,7 @@ const Footer2 = (props) => {
                 </div>
             </div>
             <div className={`wpo-footer-bottom ${props.Fbclass}`}>
-                <span>© 2021 Follio. All rights reserved</span>
+                <span>© 2026 Custom Patches. All rights reserved</span>
             </div>
         </div>
     )

@@ -3,15 +3,15 @@ import Link from 'next/link'
 
 const PatchTypesSection = (props) => {
     const patchTypes = [
-        { id: 1, title: "Embroidered Patches", description: "For a textured and raised finish, try our custom embroidered patches.", image: "/images/patches/embroidered.png", link: "/ProjectDetails" },
-        { id: 2, title: "Iron-on Patches", description: "Quick patch application on most fabrics with built-in heat-activated adhesive.", image: "/images/patches/iron-on.png", link: "/ProjectDetails" },
-        { id: 3, title: "Military Patches", description: "Represent units, ranks, achievements, unity and bravery through custom military patches.", image: "/images/patches/military.png", link: "/ProjectDetails" },
-        { id: 4, title: "Woven Patches", description: "Highly detailed, lightweight, and smooth surface defines our custom woven patches.", image: "/images/patches/woven.png", link: "/ProjectDetails" },
-        { id: 5, title: "Chenille Patches", description: "Need a soft, textured, and vintage look for varsity jackets? Try our chenille patches.", image: "/images/patches/chinelle.png", link: "/ProjectDetails" },
-        { id: 6, title: "Leather Patches", description: "Experience luxury, style, and durability with genuine custom leather patches.", image: "/images/patches/leather.png", link: "/ProjectDetails" },
-        { id: 7, title: "PVC Patches", description: "Waterproof, durable, and weather-resistant, perfect for outdoor gear and uniforms.", image: "/images/patches/PVC-Rubber.png", link: "/ProjectDetails" },
-        { id: 8, title: "Velcro Patches", description: "Attach or swap patches anytime with a reliable hook-and-loop backing system.", image: "/images/patches/velcro.png", link: "/ProjectDetails" },
-        { id: 9, title: "Sublimated Patches", description: "Ideal for intricate artwork, photo-realistic designs, and unlimited color gradients.", image: "/images/patches/sublimation.png", link: "/ProjectDetails" }
+        { id: 1, title: "Embroidered Patches", description: "Create a classic textured look with our custom embroidered patches. Detailed stitching and quality threads make them ideal for jackets, uniforms, hats, bags, and branded clothing.", image: "/images/patches/embroidered.png", link: "/Embroidered-Patches" },
+        { id: 2, title: "Iron-on Patches", description: "Add your design quickly and easily with custom iron-on patches. Featuring a heat-activated backing, these patches are convenient for applying to shirts, jackets, uniforms, bags, and other fabrics.", image: "/images/patches/iron-on.png", link: "/Embroidered-Patches" },
+        { id: 3, title: "Military Patches", description: "Represent your unit, rank, achievement, or organization with custom military patches. We create durable designs suitable for uniforms, tactical clothing, bags, and other gear.", image: "/images/patches/military.png", link: "/Embroidered-Patches" },
+        { id: 4, title: "Woven Patches", description: "For detailed designs and smaller lettering, custom woven patches provide a smooth and lightweight finish. They are a great choice for logos, labels, branding, and fashion applications.", image: "/images/patches/woven.png", link: "/Woven-Patches" },
+        { id: 5, title: "Chenille Patches", description: "Give your apparel a bold, textured appearance with custom chenille patches. Their soft, raised design makes them especially popular for varsity jackets, sports teams, clubs, and school apparel.", image: "/images/patches/chinelle.png", link: "/Chenille-Patches" },
+        { id: 6, title: "Leather Patches", description: "Add a premium and rugged touch with custom leather patches. Designed for durability and style, they are perfect for hats, jackets, bags, brands, outdoor gear, and fashion products.", image: "/images/patches/leather.png", link: "/Leather-Patches" },
+        { id: 7, title: "PVC Patches", description: "Make your designs stand out with durable custom PVC patches. Made from flexible and waterproof PVC material, these patches are ideal for outdoor gear, uniforms, bags, jackets, tactical clothing, and branded products. Their bold colors and raised or recessed details create a modern, professional look that is built to last.", image: "/images/patches/PVC-Rubber.png", link: "/PVC-Patches" },
+        { id: 8, title: "Velcro Patches", description: "Attach or swap patches anytime with a reliable hook-and-loop backing system.", image: "/images/patches/velcro.png", link: "/Velcro-Patches" },
+        { id: 9, title: "Sublimated Patches", description: "Ideal for intricate artwork, photo-realistic designs, and unlimited color gradients.", image: "/images/patches/sublimation.png", link: "/Sublimated-Patches" }
     ];
 
     const itemsPerSlide = 6;
@@ -147,8 +147,7 @@ const PatchTypesSection = (props) => {
                         </h2>
 
                         <p style={{ fontSize: '15px', color: '#64748b', lineHeight: '1.7', margin: 0 }}>
-                            Clients from every industry love our custom patches for their durable materials and sharp craftsmanship. From sports teams and tactical units to streetwear brands, we craft all patch styles tailored to your exact needs.
-                        </p>
+From businesses and sports teams to military units and fashion brands, our <Link legacyBehavior href="/Custom-Products"><a>custom patches</a></Link> are made to match your exact requirements. Choose from different patch styles, materials, shapes, and backing options. We focus on quality craftsmanship, durable materials, and detailed designs to create patches that look great and last longer.                        </p>
                     </div>
                 </div>
 

@@ -1,21 +1,39 @@
 import React, {Fragment} from 'react';
-import Navbar5 from '../../components/Navbar5'
-import Breadcrumbs from '../../components/Breadcrumbs'
+import MySkill from '../../components/MySkill'
 import Footer2 from '../../components/Footer2'
-import PorfolioSectionGrid3 from '../../components/PorfolioSectionGrid3'
 import Head from 'next/head'
+import WovenPatchApplicationsTimeline from '../../components/WovenPatchApplicationsTimeline';
+import Navbar3 from '../../components/Navbar3';
+import WovenHeaderBanner from '../../components/WovenHeaderBanner';
+import WovenPatchFinishingTabs from '../../components/WovenPatchFinishingTabs';
+import AboutValuesSection from '../../components/AboutValuesSection';
+import ContactArea from '../../components/ContactArea';
+import WovenWhyChooseUsSection from '../../components/WovenWhyChooseUsSection';
+import Testimonial2 from '../../components/Testimonial2';
+import WovenGalleryShowcase from '../../components/WovenGalleryShowcase';
+import WovenFAQAccordion from '../../components/WovenFAQAccordion';
 
-const PorfolioGrid3 =() => {
+const WovenPatches =() => {
     return(
         <Fragment>
             <Head>
-                <title>Portfolio 3</title>
+                <title>Woven Patches</title>
             </Head>
-            <Navbar5/>
-            <Breadcrumbs pageTitle={'Portfolio'} pageSub={'Portfolio'}/>
-            <PorfolioSectionGrid3 protfclass={'wpo-protfolio-area-3'}/>
-            <Footer2 Ftclass={'wpo-footer-area3'}/>
+            <Navbar3/>
+            <WovenHeaderBanner/>
+            <WovenPatchApplicationsTimeline/>
+            <WovenPatchFinishingTabs/>
+            <WovenWhyChooseUsSection/>
+            <WovenGalleryShowcase/>
+            <MySkill/>
+            <AboutValuesSection/>
+              <ContactArea contactclass={'wpo-contact-area3'}/>
+              <Testimonial2/>
+              <WovenFAQAccordion/>
+            <Footer2 Ftclass={'wpo-footer-area3'} />
+          
+
         </Fragment>
     )
 };
-export default PorfolioGrid3;
+export default WovenPatches;

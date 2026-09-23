@@ -180,12 +180,11 @@ const EmbroideredHeaderBanner = () => {
                         <span className="badge-about">Embroidered Patches</span>
 
                         <h1 className="main-heading">
-                            Mastering texture and density for your custom <span className="brand-red">Embroidered Patches</span>
+                            Mastering Texture and Density for Your Custom<span className="brand-red">Embroidered Patches</span>
                         </h1>
 
                         <p className="sub-heading">
-                            Built with high-density thread weaving, tight merrowed borders, and zero setup fees. Turn your artwork into an heirloom-quality physical emblem.
-                        </p>
+ Create premium <a href="/Embroidered-Patches">embroidered patches</a> with detailed stitching, rich colors, and a professional textured finish. From logos and uniforms to fashion and team apparel, we turn your artwork into durable embroidered patches designed to make your brand, team, or organization stand out.                        </p>
 
                         <div className="stats-grid">
                             <div className="stat-card">
