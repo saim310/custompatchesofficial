@@ -22,6 +22,52 @@ const PatchTypesSection = (props) => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
     const cardRefs = useRef([]);
+    const mobileScrollRef = useRef(null);
+
+    // Fast mobile autoplay ticker effect
+    useEffect(() => {
+        const slider = mobileScrollRef.current;
+        if (!slider) return;
+
+        let animationFrameId;
+        let scrollSpeed = 1.2; // Adjust for speed (higher = faster)
+
+        const autoScroll = () => {
+            if (slider) {
+                slider.scrollLeft += scrollSpeed;
+                // If it reaches the end, loop back smoothly to the start
+                if (slider.scrollLeft >= (slider.scrollWidth - slider.clientWidth)) {
+                    slider.scrollLeft = 0;
+                }
+            }
+            animationFrameId = requestAnimationFrame(autoScroll);
+        };
+
+        // Start autoplay
+        animationFrameId = requestAnimationFrame(autoScroll);
+
+        // Pause autoplay on touch/hover so user can interact
+        const pauseScroll = () => cancelAnimationFrame(animationFrameId);
+        const resumeScroll = () => {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = requestAnimationFrame(autoScroll);
+        };
+
+        slider.addEventListener('touchstart', pauseScroll);
+        slider.addEventListener('touchend', resumeScroll);
+        slider.addEventListener('mouseenter', pauseScroll);
+        slider.addEventListener('mouseleave', resumeScroll);
+
+        return () => {
+            cancelAnimationFrame(animationFrameId);
+            if (slider) {
+                slider.removeEventListener('touchstart', pauseScroll);
+                slider.removeEventListener('touchend', resumeScroll);
+                slider.removeEventListener('mouseenter', pauseScroll);
+                slider.removeEventListener('mouseleave', resumeScroll);
+            }
+        };
+    }, []);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -124,7 +170,7 @@ const PatchTypesSection = (props) => {
                     max-width: 90%;
                 }
 
-                /* Mobile Single Row Horizontal Slider Styles */
+                /* Mobile Multi-Column Auto Slider Styles */
                 .mobile-patch-slider {
                     display: none;
                 }
@@ -133,7 +179,7 @@ const PatchTypesSection = (props) => {
                     .mobile-patch-slider {
                         display: block;
                         overflow-x: auto;
-                        scroll-snap-type: x mandatory;
+                        scroll-behavior: smooth;
                         -webkit-overflow-scrolling: touch;
                         scrollbar-width: none;
                         padding: 10px 4px 20px;
@@ -143,14 +189,35 @@ const PatchTypesSection = (props) => {
                     }
                     .mobile-patch-track {
                         display: flex;
-                        gap: 20px;
+                        gap: 12px;
                         width: max-content;
                     }
                     .mobile-patch-item {
-                        width: 82vw;
-                        max-width: 340px;
-                        scroll-snap-align: center;
+                        width: 44vw; /* Makes cards smaller to fit at least 2 columns in view */
+                        max-width: 200px;
                         flex-shrink: 0;
+                    }
+                    /* Scale down content inside mobile cards for a compact look */
+                    .mobile-patch-item .patch-card {
+                        padding: 16px 12px 20px;
+                        border-radius: 16px;
+                    }
+                    .mobile-patch-item .patch-img-box {
+                        height: 120px;
+                        margin-bottom: 14px;
+                        border-radius: 12px;
+                    }
+                    .mobile-patch-item .patch-title {
+                        font-size: 14px;
+                        margin-bottom: 6px;
+                    }
+                    .mobile-patch-item .patch-desc {
+                        font-size: 11px;
+                        line-height: 1.4;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
                     }
                     .desktop-slider-container {
                         display: none !important;
@@ -187,8 +254,8 @@ const PatchTypesSection = (props) => {
                     </div>
                 </div>
 
-                {/* Mobile Single Row Horizontal Slider */}
-                <div className="mobile-patch-slider">
+                {/* Mobile Auto-Scrolling Multi-Column Slider */}
+                <div className="mobile-patch-slider" ref={mobileScrollRef}>
                     <div className="mobile-patch-track">
                         {patchTypes.map((item) => (
                             <div className="mobile-patch-item" key={item.id}>

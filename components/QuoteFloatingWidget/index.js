@@ -15,8 +15,8 @@ const QuoteFloatingWidget = () => {
             <style jsx>{`
                 .quote-widget-container {
                     position: fixed;
-                    bottom: 30px;
-                    right: 30px;
+                    bottom: 25px;
+                    right: 25px;
                     z-index: 99999;
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
                 }
@@ -30,32 +30,32 @@ const QuoteFloatingWidget = () => {
                     border: none;
                     padding: 0;
                     position: relative;
-                    width: 86px;
-                    height: 86px;
+                    width: 94px;
+                    height: 94px;
                 }
 
-                /* Aesthetic round button with Pink theme */
+                /* Balanced central round button */
                 .quote-btn-circle {
                     width: 64px;
                     height: 64px;
                     border-radius: 50%;
-                    background: #e11d48; /* Vibrant pink/rose tone */
+                    background: #e11d48;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    box-shadow: 0 8px 25px rgba(225, 29, 72, 0.35);
+                    box-shadow: 0 8px 22px rgba(225, 29, 72, 0.38);
                     position: absolute;
-                    top: 11px;
-                    left: 11px;
+                    top: 15px;
+                    left: 15px;
                     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-                    border: 3px solid rgba(255, 255, 255, 0.9);
+                    border: 2.5px solid rgba(255, 255, 255, 0.95);
                 }
 
-                /* Pulsing outer ring in matching pink */
+                /* Pulsing outer ring */
                 .quote-btn-circle::before {
                     content: '';
                     position: absolute;
-                    inset: -6px;
+                    inset: -5px;
                     border-radius: 50%;
                     background: rgba(225, 29, 72, 0.2);
                     z-index: -1;
@@ -64,14 +64,14 @@ const QuoteFloatingWidget = () => {
 
                 @keyframes pulse-ring {
                     0% { transform: scale(1); opacity: 0.8; }
-                    50% { transform: scale(1.12); opacity: 0.3; }
+                    50% { transform: scale(1.1); opacity: 0.3; }
                     100% { transform: scale(1); opacity: 0.8; }
                 }
 
                 .quote-widget-btn:hover .quote-btn-circle {
                     transform: scale(1.06);
                     background: #be123c;
-                    box-shadow: 0 12px 30px rgba(225, 29, 72, 0.45);
+                    box-shadow: 0 12px 28px rgba(225, 29, 72, 0.48);
                 }
 
                 .quote-icon {
@@ -79,7 +79,7 @@ const QuoteFloatingWidget = () => {
                     height: 24px;
                     fill: none;
                     stroke: #ffffff;
-                    stroke-width: 2;
+                    stroke-width: 2.2;
                     stroke-linecap: round;
                     stroke-linejoin: round;
                 }
@@ -89,8 +89,8 @@ const QuoteFloatingWidget = () => {
                     position: absolute;
                     top: 0;
                     left: 0;
-                    width: 86px;
-                    height: 86px;
+                    width: 94px;
+                    height: 94px;
                     animation: rotate-text 16s linear infinite;
                     pointer-events: none;
                 }
@@ -105,28 +105,20 @@ const QuoteFloatingWidget = () => {
                 }
 
                 .text-path-style {
-                    font-size: 10px;
-                    font-weight: 700;
-                    fill: #be123c; /* Matches the pink theme */
-                    letter-spacing: 1.8px;
+                    font-size: 11px; /* Perfectly proportioned text size */
+                    font-weight: 800;
+                    fill: #e11d48;
+                    letter-spacing: 2.2px;
                     text-transform: uppercase;
-                }
-
-                /* Responsive */
-                @media (max-width: 480px) {
-                    .quote-widget-container {
-                        bottom: 20px;
-                        right: 20px;
-                    }
                 }
             `}</style>
 
             <button className="quote-widget-btn" onClick={handleOpen} type="button" aria-label="Get a Quote">
-                {/* Rotating curved text around the button */}
+                {/* Rotating curved text */}
                 <svg className="curved-text-svg" viewBox="0 0 100 100">
                     <path
                         id="circlePath"
-                        d="M 15, 50 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
+                        d="M 12, 50 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"
                         fill="none"
                     />
                     <text>

@@ -69,11 +69,27 @@ const SkillsSection = () => {
 
     return (
         <section ref={sectionRef} className="skills-section">
+            {/* Background Video and Overlay */}
+            <div className="video-background-wrapper">
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="bg-video"
+                >
+                    <source src="/images/homevid.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div className="video-overlay"></div>
+            </div>
+
             <style jsx>{`
                 .skills-section {
-                    background: #f8fafc;
-                    padding: 80px 0 90px;
-                    color: #0d1322;
+                    position: relative;
+                    overflow: hidden;
+                    padding: 90px 0 100px;
+                    color: #ffffff;
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
                     opacity: 0;
                     transform: translateY(20px);
@@ -86,7 +102,33 @@ const SkillsSection = () => {
                     transform: translateY(0);
                 }
 
+                .video-background-wrapper {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                }
+
+                .bg-video {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .video-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(11, 19, 43, 0.65); /* Dark overlay for text clarity */
+                }
+
                 .container {
+                    position: relative;
+                    z-index: 2;
                     max-width: 960px;
                     margin: 0 auto;
                     padding: 0 24px;
@@ -96,9 +138,10 @@ const SkillsSection = () => {
                     font-size: 42px;
                     font-weight: 800;
                     text-align: center;
-                    color: #0d1322;
+                    color: #ffffff;
                     margin: 0 0 50px 0;
                     letter-spacing: -0.5px;
+                    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
                 }
 
                 .skills-grid {
@@ -123,8 +166,9 @@ const SkillsSection = () => {
                     align-items: center;
                     justify-content: center;
                     border-radius: 50%;
-                    background: #ffffff;
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+                    background: rgba(15, 23, 42, 0.5); /* Semi-transparent background behind circle */
+                    backdrop-filter: blur(5px);
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
                     margin-bottom: 16px;
                 }
 
@@ -136,7 +180,7 @@ const SkillsSection = () => {
 
                 .circle-bg {
                     fill: none;
-                    stroke: #e2e8f0;
+                    stroke: rgba(255, 255, 255, 0.15);
                     stroke-width: ${strokeWidth};
                 }
 
@@ -152,16 +196,18 @@ const SkillsSection = () => {
                 .percent-number {
                     position: absolute;
                     font-size: 18px;
-                    font-weight: 500;
-                    color: #0d1322;
+                    font-weight: 600;
+                    color: #ffffff;
+                    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
                 }
 
                 .skill-title {
-                    font-size: 14px;
+                    font-size: 15px;
                     font-weight: 600;
-                    color: #64748b;
+                    color: #f1f5f9;
                     margin: 0;
                     letter-spacing: 0.2px;
+                    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
                 }
 
                 /* Slider Navigation Dots (Mobile / Small Screens) */
@@ -176,7 +222,7 @@ const SkillsSection = () => {
                     width: 8px;
                     height: 8px;
                     border-radius: 50%;
-                    background: #cbd5e1;
+                    background: rgba(255, 255, 255, 0.4);
                     border: none;
                     padding: 0;
                     cursor: pointer;
@@ -184,7 +230,7 @@ const SkillsSection = () => {
                 }
 
                 .dot.active {
-                    background: #0d1322;
+                    background: #ffffff;
                     width: 24px;
                     border-radius: 4px;
                 }
@@ -197,6 +243,7 @@ const SkillsSection = () => {
 
                     .section-title {
                         padding: 0 24px;
+                        font-size: 32px;
                     }
 
                     .skills-grid {

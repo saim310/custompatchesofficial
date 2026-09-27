@@ -12,6 +12,8 @@ const ContactArea = (props) => {
     });
 
     const [fileName, setFileName] = useState('Attach design / mockups');
+    const [loading, setLoading] = useState(false);
+    const [statusMessage, setStatusMessage] = useState({ type: '', text: '' });
     const containerRef = useRef(null);
 
     const handleChange = (e) => {
@@ -26,10 +28,85 @@ const ContactArea = (props) => {
         }
     };
 
-    const handleSubmit = (e) => {
+    // Helper to convert uploaded file to Base64
+    const convertFileToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                // Extract base64 string after the comma (e.g., "data:image/png;base64,iVBORw0KG...")
+                const base64String = reader.result.split(',')[1];
+                resolve(base64String);
+            };
+            reader.onerror = (error) => reject(error);
+        });
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Quote Request Submitted:', formData);
-        alert('Your quote request has been received!');
+        setLoading(true);
+        setStatusMessage({ type: '', text: '' });
+
+        try {
+            let filePayload = null;
+
+            if (formData.file) {
+                const base64Content = await convertFileToBase64(formData.file);
+                filePayload = {
+                    filename: formData.file.name,
+                    content: base64Content,
+                };
+            }
+
+            // Map fields to match your backend expectations
+            const payload = {
+                name: formData.fullName,
+                email: formData.email,
+                phone: formData.phone,
+                patchType: `${formData.patchType} ${formData.companyName ? `(Company: ${formData.companyName})` : ''}`,
+                quantity: 'Not specified in quick form', // or add a quantity field if needed
+                details: formData.message,
+                file: filePayload,
+            };
+
+            const response = await fetch('/api/send-quote', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                setStatusMessage({
+                    type: 'success',
+                    text: 'Your quote request has been sent successfully! We will get back to you within 24 hours.',
+                });
+                // Reset form
+                setFormData({
+                    fullName: '',
+                    email: '',
+                    companyName: '',
+                    patchType: '',
+                    phone: '',
+                    file: null,
+                    message: ''
+                });
+                setFileName('Attach design / mockups');
+            } else {
+                throw new Error(result.error || 'Failed to send quote request.');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            setStatusMessage({
+                type: 'error',
+                text: error.message || 'Something went wrong. Please try calling us directly.',
+            });
+        } finally {
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
@@ -164,9 +241,14 @@ const ContactArea = (props) => {
                     box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
                 }
 
-                .submit-btn-glow:hover {
+                .submit-btn-glow:hover:not(:disabled) {
                     transform: translateY(-2px);
                     box-shadow: 0 12px 28px rgba(220, 38, 38, 0.4);
+                }
+
+                .submit-btn-glow:disabled {
+                    opacity: 0.7;
+                    cursor: not-allowed;
                 }
             `}</style>
 
@@ -196,8 +278,8 @@ const ContactArea = (props) => {
                                     </div>
                                     <div>
                                         <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600', display: 'block' }}>URGENT ORDERS</span>
-                                        <a href="tel:+18608351486" style={{ fontSize: '18px', fontWeight: '800', color: '#0f172a', textDecoration: 'none' }}>
-                                          +1(806) 715-4411
+                                        <a href="tel:+18067154411" style={{ fontSize: '18px', fontWeight: '800', color: '#0f172a', textDecoration: 'none' }}>
+                                            +1(806) 715-4411
                                         </a>
                                     </div>
                                 </div>
@@ -210,7 +292,7 @@ const ContactArea = (props) => {
                                     </div>
                                     <div>
                                         <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600', display: 'block' }}>DIRECT EMAIL</span>
-                                        <a href="mailto:info@americancustompatch.com" style={{ fontSize: '15px', fontWeight: '800', color: '#0f172a', textDecoration: 'none' }}>
+                                        <a href="mailto:service@custompatchesofficial.com" style={{ fontSize: '15px', fontWeight: '800', color: '#0f172a', textDecoration: 'none' }}>
                                             service@custompatchesofficial.com
                                         </a>
                                     </div>
@@ -230,6 +312,21 @@ const ContactArea = (props) => {
                                         Fast Turnaround
                                     </span>
                                 </div>
+
+                                {statusMessage.text && (
+                                    <div style={{
+                                        padding: '12px 16px',
+                                        borderRadius: '8px',
+                                        marginBottom: '20px',
+                                        fontSize: '14px',
+                                        fontWeight: '600',
+                                        backgroundColor: statusMessage.type === 'success' ? '#f0fdf4' : '#fef2f2',
+                                        color: statusMessage.type === 'success' ? '#16a34a' : '#dc2626',
+                                        border: `1px solid ${statusMessage.type === 'success' ? '#bbf7d0' : '#fecaca'}`
+                                    }}>
+                                        {statusMessage.text}
+                                    </div>
+                                )}
 
                                 <form onSubmit={handleSubmit}>
                                     <div className="row g-3">
@@ -272,13 +369,14 @@ const ContactArea = (props) => {
                                                 className="form-control-custom"
                                                 value={formData.patchType}
                                                 onChange={handleChange}
+                                                required
                                             >
-                                                <option value="" disabled selected>Select Patch Style</option>
-                                                <option value="embroidered">Embroidered Patches</option>
-                                                <option value="pvc">3D PVC / Rubber Patches</option>
-                                                <option value="woven">Woven Patches</option>
-                                                <option value="chenille">Chenille / Varsity Patches</option>
-                                                <option value="leather">Leather Patches</option>
+                                                <option value="" disabled>Select Patch Style *</option>
+                                                <option value="Embroidered Patches">Embroidered Patches</option>
+                                                <option value="3D PVC / Rubber Patches">3D PVC / Rubber Patches</option>
+                                                <option value="Woven Patches">Woven Patches</option>
+                                                <option value="Chenille / Varsity Patches">Chenille / Varsity Patches</option>
+                                                <option value="Leather Patches">Leather Patches</option>
                                             </select>
                                         </div>
 
@@ -323,8 +421,8 @@ const ContactArea = (props) => {
                                         </div>
 
                                         <div className="col-12 mt-4">
-                                            <button type="submit" className="submit-btn-glow">
-                                                Request Free Quote & Proof →
+                                            <button type="submit" className="submit-btn-glow" disabled={loading}>
+                                                {loading ? 'Sending Request...' : 'Request Free Quote & Proof →'}
                                             </button>
                                         </div>
                                     </div>

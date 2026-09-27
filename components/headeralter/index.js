@@ -116,7 +116,6 @@ const HeaderAlter = (props) => {
                                 <li><Link legacyBehavior href="/Lapel-Pins">Lapel Pins</Link></li>
                             </ul>
                         </li>
-                        <li><Link legacyBehavior href="/OurWork" title="">Our Work</Link></li>
                         <li><Link legacyBehavior href="/FAQs" title="">FAQ's</Link></li>
                         <li><Link legacyBehavior href="/BlogPage" title="">Blog</Link></li>
                         <li><Link legacyBehavior href="/ContactPage" title="">Contact</Link></li>
