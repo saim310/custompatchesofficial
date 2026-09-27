@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 const RequirementModal = ({ isOpen, onClose }) => {
     const [step, setStep] = useState(1);
     const [mounted, setMounted] = useState(false);
+    const [loading, setLoading] = useState(false);
     
     // Ensure portal only renders on client-side (Next.js compatibility)
     useEffect(() => {
@@ -37,10 +38,62 @@ const RequirementModal = ({ isOpen, onClose }) => {
     const nextStep = () => setStep(prev => Math.min(prev + 1, 3));
     const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert('Quote request submitted successfully!');
-        onClose();
+        setLoading(true);
+
+        try {
+            // Helper function to convert file to base64
+            const convertFileToBase64 = (file) => {
+                return new Promise((resolve, reject) => {
+                    if (!file) return resolve(null);
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    const fileInputSrc = file;
+                    reader.onload = () => resolve({
+                        filename: fileInputSrc.name,
+                        content: reader.result.split(',')[1] // Strip prefix
+                    });
+                    reader.onerror = error => reject(error);
+                });
+            };
+
+            const fileAttachment = await convertFileToBase64(formData.file);
+
+            const response = await fetch('/api/send-quote', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    patchType: formData.productType,
+                    quantity: formData.quantity,
+                    details: `
+                        Width: ${formData.width} inches\n
+                        Height: ${formData.height} inches\n
+                        Backing: ${formData.backing}\n
+                        Budget: ${formData.budget || 'N/A'}\n
+                        Instructions: ${formData.instructions || 'None'}
+                    `,
+                    file: fileAttachment
+                }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                alert('Quote request submitted successfully! We have received your details.');
+                onClose();
+            } else {
+                alert('Something went wrong. Please try again.');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            alert('Network error. Please check your connection.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     // Render modal directly into document.body to bypass header layout stacking contexts
@@ -149,7 +202,6 @@ const RequirementModal = ({ isOpen, onClose }) => {
                                     name="file" 
                                     onChange={handleChange} 
                                     style={styles.fileInput} 
-                                    required 
                                 />
                                 <span style={styles.hint}>Supports PNG, JPG, AI, PDF, PSD vector/image files.</span>
                             </div>
@@ -237,8 +289,8 @@ const RequirementModal = ({ isOpen, onClose }) => {
                                 <button type="button" onClick={prevStep} style={styles.backBtn}>
                                     ← Back
                                 </button>
-                                <button type="submit" style={styles.submitBtn}>
-                                    Submit Free Quote Request 🚀
+                                <button type="submit" style={styles.submitBtn} disabled={loading}>
+                                    {loading ? 'Sending...' : 'Submit Free Quote Request 🚀'}
                                 </button>
                             </div>
                         </div>
