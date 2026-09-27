@@ -24,7 +24,7 @@ const WovenPatches =() => {
             <WovenPatchApplicationsTimeline/>
             <WovenPatchFinishingTabs/>
             <WovenWhyChooseUsSection/>
-            <WovenGalleryShowcase/>
+            {/* <WovenGalleryShowcase/> */}
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>

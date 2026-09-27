@@ -24,7 +24,7 @@ const SublimatedPatches =() => {
             <SublimatedPatchApplicationsTimeline/>
             <SublimatedPatchFinishingTabs/>
             <SublimatedWhyChooseUsSection/>
-            <SublimatedGalleryShowcase/>
+            {/* <SublimatedGalleryShowcase/> */}
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>

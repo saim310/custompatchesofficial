@@ -24,7 +24,7 @@ const CustomLapelPins =() => {
             <CustomLapelPatchApplicationsTimeline/>
             <CustomLapelPatchFinishingTabs/>
             <CustomLapelWhyChooseUsSection/>
-            <CustomLapelGalleryShowcase/>
+            {/* <CustomLapelGalleryShowcase/> */}
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>

@@ -24,7 +24,7 @@ const LeatherPatches =() => {
             <LeatherPatchApplicationsTimeline/>
             <LeatherPatchFinishingTabs/>
             <LeatherWhyChooseUsSection/>
-            <LeatherGalleryShowcase/>
+            {/* <LeatherGalleryShowcase/> */}
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>

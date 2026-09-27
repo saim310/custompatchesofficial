@@ -4,7 +4,6 @@ import Link from 'next/link';
 const categories = [
     {
         title: "Embroidered Patches",
-        icon: "🧵",
         image: "/images/patches/embroidered.png",
         links: [
             { name: "Standard Thread Chart", href: "/Embroidered-Patches" },
@@ -17,7 +16,6 @@ const categories = [
     },
     {
         title: "PVC Patches",
-        icon: "📚",
         image: "/images/patches/PVC-Rubber.png",
         links: [
             { name: "Pantone Color Chart", href: "/PVC-Patches" },
@@ -26,7 +24,6 @@ const categories = [
     },
     {
         title: "Woven Patches",
-        icon: "🪡",
         image: "/images/patches/woven.png",
         links: [
             { name: "Thread Chart", href: "/Woven-Patches" },
@@ -35,7 +32,6 @@ const categories = [
     },
     {
         title: "Leather Patches",
-        icon: "🏷️",
         image: "/images/patches/leather.png",
         links: [
             { name: "Leather Colors", href: "/Leather-Patches" },
@@ -45,7 +41,6 @@ const categories = [
     },
     {
         title: "Chenille Patches",
-        icon: "☁️",
         image: "/images/patches/chinelle.png",
         links: [
             { name: "Premium Thread Chart", href: "/Chenille-Patches" },
@@ -55,7 +50,6 @@ const categories = [
     },
     {
         title: "Sublimated Patches",
-        icon: "🖼️",
         image: "/images/patches/sublimation.png",
         links: [
             { name: "Material Instructions", href: "/Sublimated-Patches" }
@@ -63,11 +57,9 @@ const categories = [
     },
     {
         title: "Lapel Pins",
-        icon: "📍",
         image: "/images/patches/iron-on.png",
         links: [
-            { name: "Plating Options", href: "/Lapel-Pins" },
-          
+            { name: "Plating Options", href: "/Lapel-Pins" }
         ]
     }
 ];
@@ -125,20 +117,7 @@ const EmblemResourceGrid = () => {
                 .card-header {
                     display: flex;
                     align-items: center;
-                    gap: 12px;
                     margin-bottom: 12px;
-                }
-                .card-icon-badge {
-                    width: 38px;
-                    height: 38px;
-                    background-color: #fdf2f4;
-                    border: 1px solid #fde8ec;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 16px;
-                    flex-shrink: 0;
                 }
                 .card-header h3 {
                     font-size: 16px;
@@ -232,9 +211,6 @@ const EmblemResourceGrid = () => {
                             </div>
                             <div className="card-content">
                                 <div className="card-header">
-                                    <div className="card-icon-badge">
-                                        <span>{cat.icon}</span>
-                                    </div>
                                     <h3>{cat.title}</h3>
                                 </div>
                                 <div className="card-divider"></div>

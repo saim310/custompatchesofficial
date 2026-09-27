@@ -18,6 +18,7 @@ const menus = [
         title: 'Custom Products',
         link: '/CustomProducts',
         submenu: [
+            { id: 30, title: 'Custom Products', link: '/CustomProducts' },
             { id: 31, title: 'Embroidered Patches', link: '/Embroidered-Patches' },
             { id: 32, title: 'PVC Patches', link: '/PVC-Patches' },
             { id: 33, title: 'Woven Patches', link: '/Woven-Patches' },

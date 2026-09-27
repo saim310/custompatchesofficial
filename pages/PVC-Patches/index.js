@@ -24,7 +24,7 @@ const PVCPatches =() => {
             <PVCPatchApplicationsTimeline/>
             <PVCPatchFinishingTabs/>
             <PVCWhyChooseUsSection/>
-            <PVCGalleryShowcase/>
+            {/* <PVCGalleryShowcase/> */}
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>

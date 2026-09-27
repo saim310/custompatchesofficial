@@ -24,7 +24,7 @@ const ChenillePatches =() => {
             <ChenillePatchApplicationsTimeline/>
             <ChenillePatchFinishingTabs/>
             <ChenilleWhyChooseUsSection/>
-            <ChenilleGalleryShowcase/>
+            {/* <ChenilleGalleryShowcase/> */}
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>

@@ -24,7 +24,7 @@ const EmbroideredPatches =() => {
             <EmbroideredPatchApplicationsTimeline/>
             <EmbroideredPatchFinishingTabs/>
             <EmbroideredWhyChooseUsSection/>
-            <EmbroideredGalleryShowcase/>
+            {/* <EmbroideredGalleryShowcase/> */}
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>

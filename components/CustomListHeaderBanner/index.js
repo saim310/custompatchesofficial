@@ -31,7 +31,7 @@ const CustomProductsHeaderBanner = () => {
                 .custom-products-banner-section {
                     position: relative;
                     width: 100%;
-                    margin-top: 40px; /* Added gap between navbar and banner */
+                    margin-top: 40px;
                     padding: 45px 0;
                     display: flex;
                     align-items: center;
@@ -89,7 +89,6 @@ const CustomProductsHeaderBanner = () => {
                     max-width: 600px;
                 }
 
-                /* CTA Button Styles */
                 .banner-cta-wrap {
                     display: flex;
                     align-items: center;
