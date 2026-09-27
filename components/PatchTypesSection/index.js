@@ -91,7 +91,7 @@ const PatchTypesSection = (props) => {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    padding: 10px; /* Reduced padding to make space for a larger image */
+                    padding: 10px;
                     margin-bottom: 32px;
                     background: #ffffff;
                 }
@@ -101,8 +101,8 @@ const PatchTypesSection = (props) => {
                 }
 
                 .patch-img-box img {
-                    width: 82%; /* Increased width so the image appears noticeably larger */
-                    height: 82%; /* Increased height */
+                    width: 82%;
+                    height: 82%;
                     object-fit: contain;
                     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
                     filter: drop-shadow(0 8px 16px rgba(0,0,0,0.06));
@@ -122,6 +122,42 @@ const PatchTypesSection = (props) => {
                     line-height: 1.6;
                     margin: 0;
                     max-width: 90%;
+                }
+
+                /* Mobile Single Row Horizontal Slider Styles */
+                .mobile-patch-slider {
+                    display: none;
+                }
+
+                @media (max-width: 991px) {
+                    .mobile-patch-slider {
+                        display: block;
+                        overflow-x: auto;
+                        scroll-snap-type: x mandatory;
+                        -webkit-overflow-scrolling: touch;
+                        scrollbar-width: none;
+                        padding: 10px 4px 20px;
+                    }
+                    .mobile-patch-slider::-webkit-scrollbar {
+                        display: none;
+                    }
+                    .mobile-patch-track {
+                        display: flex;
+                        gap: 20px;
+                        width: max-content;
+                    }
+                    .mobile-patch-item {
+                        width: 82vw;
+                        max-width: 340px;
+                        scroll-snap-align: center;
+                        flex-shrink: 0;
+                    }
+                    .desktop-slider-container {
+                        display: none !important;
+                    }
+                    .pagination-dots {
+                        display: none !important;
+                    }
                 }
             `}</style>
 
@@ -147,11 +183,37 @@ const PatchTypesSection = (props) => {
                         </h2>
 
                         <p style={{ fontSize: '15px', color: '#64748b', lineHeight: '1.7', margin: 0 }}>
-From businesses and sports teams to military units and fashion brands, our <Link legacyBehavior href="/Custom-Products"><a>custom patches</a></Link> are made to match your exact requirements. Choose from different patch styles, materials, shapes, and backing options. We focus on quality craftsmanship, durable materials, and detailed designs to create patches that look great and last longer.                        </p>
+                            From businesses and sports teams to military units and fashion brands, our <Link legacyBehavior href="/Custom-Products"><a>custom patches</a></Link> are made to match your exact requirements. Choose from different patch styles, materials, shapes, and backing options. We focus on quality craftsmanship, durable materials, and detailed designs to create patches that look great and last longer.                        </p>
                     </div>
                 </div>
 
-                <div style={{ position: 'relative', overflow: 'hidden', padding: '10px 4px 20px' }}>
+                {/* Mobile Single Row Horizontal Slider */}
+                <div className="mobile-patch-slider">
+                    <div className="mobile-patch-track">
+                        {patchTypes.map((item) => (
+                            <div className="mobile-patch-item" key={item.id}>
+                                <div className="patch-card animate-in">
+                                    <div className="patch-img-box">
+                                        <img src={item.image} alt={item.title} />
+                                    </div>
+
+                                    <h3 className="patch-title">
+                                        <Link legacyBehavior href={item.link}>
+                                            <a style={{ color: 'inherit', textDecoration: 'none' }}>{item.title}</a>
+                                        </Link>
+                                    </h3>
+
+                                    <p className="patch-desc">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Desktop Slider Container */}
+                <div className="desktop-slider-container" style={{ position: 'relative', overflow: 'hidden', padding: '10px 4px 20px' }}>
                     <div style={{
                         display: 'flex',
                         transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
@@ -188,7 +250,8 @@ From businesses and sports teams to military units and fashion brands, our <Link
                     </div>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', marginTop: '40px' }}>
+                {/* Pagination Dots (Desktop Only) */}
+                <div className="pagination-dots" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', marginTop: '40px' }}>
                     {slides.map((_, idx) => (
                         <button
                             key={idx}

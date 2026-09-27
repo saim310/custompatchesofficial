@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import RequirementModal from '../RequirementModal';
 
 const EmbroideredHeaderBanner = () => {
     const sectionRef = useRef(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -186,26 +188,16 @@ const EmbroideredHeaderBanner = () => {
                         <p className="sub-heading">
 Create eye-catching <a href="/Chenille-Patches"><b>custom chenille patches</b></a> with a soft, raised texture and bold three-dimensional appearance. Perfect for varsity jackets, sports teams, schools, clubs, and fashion apparel, chenille patches give your designs a classic and premium look. Customize your patch with your preferred colors, letters, logos, shapes, and backing options.                        </p>
 
-                        <div className="stats-grid">
-                            <div className="stat-card">
-                                <span className="stat-number">10K+</span>
-                                <span className="stat-label">Happy Clients</span>
-                            </div>
+                                   {/* Action Button */}
+                        <div>
+                             <button 
+                                    type="button" 
+                                    className="theme-btn-s2" 
+                                    onClick={() => setIsModalOpen(true)}
+                                >
+                                    Get A Quote
+                                </button>
 
-                            <div className="stat-card">
-                                <span className="stat-number">9</span>
-                                <span className="stat-label">Total Categories</span>
-                            </div>
-
-                            <div className="stat-card stat-card-red">
-                                <span className="stat-number red-text">100%</span>
-                                <span className="stat-label">Quality Verified</span>
-                            </div>
-
-                            <div className="stat-card">
-                                <span className="stat-number">0$</span>
-                                <span className="stat-label">Setup Fees</span>
-                            </div>
                         </div>
                     </div>
 
@@ -218,6 +210,10 @@ Create eye-catching <a href="/Chenille-Patches"><b>custom chenille patches</b></
                     </div>
                 </div>
             </div>
+                  <RequirementModal
+             isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+                />
         </section>
     );
 };

@@ -197,7 +197,7 @@ const ContactArea = (props) => {
                                     <div>
                                         <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600', display: 'block' }}>URGENT ORDERS</span>
                                         <a href="tel:+18608351486" style={{ fontSize: '18px', fontWeight: '800', color: '#0f172a', textDecoration: 'none' }}>
-                                            +1 (860) 835–1486
+                                          +1(806) 715-4411
                                         </a>
                                     </div>
                                 </div>
@@ -211,7 +211,7 @@ const ContactArea = (props) => {
                                     <div>
                                         <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600', display: 'block' }}>DIRECT EMAIL</span>
                                         <a href="mailto:info@americancustompatch.com" style={{ fontSize: '15px', fontWeight: '800', color: '#0f172a', textDecoration: 'none' }}>
-                                            info@americancustompatch.com
+                                            service@custompatchesofficial.com
                                         </a>
                                     </div>
                                 </div>

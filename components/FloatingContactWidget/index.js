@@ -87,7 +87,7 @@ const FloatingContactWidget = () => {
 
             {/* Email Button */}
             <a 
-              href="mailto:support@example.com" 
+              href="mailto:service@custompatchesofficial.com" 
               style={{
                 width: '46px',
                 height: '46px',
@@ -111,7 +111,7 @@ const FloatingContactWidget = () => {
 
             {/* WhatsApp Button (Open State) */}
             <a 
-              href="https://whatsapp.com" 
+              href="https://wa.me/+18067154411" 
               target="_blank" 
               rel="noopener noreferrer" 
               style={{
@@ -139,7 +139,7 @@ const FloatingContactWidget = () => {
 
             {/* Phone Button */}
             <a 
-              href="tel:+1234567890" 
+              href="tel:+18067154411" 
               style={{
                 width: '46px',
                 height: '46px',

@@ -9,7 +9,7 @@ import PVCPatchFinishingTabs from '../../components/PVCPatchFinishingTabs';
 import AboutValuesSection from '../../components/AboutValuesSection';
 import ContactArea from '../../components/ContactArea';
 import PVCWhyChooseUsSection from '../../components/PVCWhyChooseUsSection';
-import Testimonial2 from '../../components/Testimonial2';
+
 import PVCGalleryShowcase from '../../components/PVCGalleryShowcase';
 import PVCFAQAccordion from '../../components/PVCFAQAccordion';
 
@@ -28,7 +28,7 @@ const PVCPatches =() => {
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>
-              <Testimonial2/>
+     
               <PVCFAQAccordion/>
             <Footer2 Ftclass={'wpo-footer-area3'} />
           

@@ -9,7 +9,7 @@ import WovenPatchFinishingTabs from '../../components/WovenPatchFinishingTabs';
 import AboutValuesSection from '../../components/AboutValuesSection';
 import ContactArea from '../../components/ContactArea';
 import WovenWhyChooseUsSection from '../../components/WovenWhyChooseUsSection';
-import Testimonial2 from '../../components/Testimonial2';
+
 import WovenGalleryShowcase from '../../components/WovenGalleryShowcase';
 import WovenFAQAccordion from '../../components/WovenFAQAccordion';
 
@@ -28,7 +28,7 @@ const WovenPatches =() => {
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>
-              <Testimonial2/>
+            
               <WovenFAQAccordion/>
             <Footer2 Ftclass={'wpo-footer-area3'} />
           

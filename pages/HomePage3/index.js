@@ -31,13 +31,13 @@ const HomePage3 = () => {
             <PatchTypesSection/>
             <CompareSection/>
             <GearVisualizerSection/>
-            <PatchEstimatorLight/>
+            {/* <PatchEstimatorLight/> */}
             <WhyChooseUsSection/>
          
             <div id="contact-section">
     <ContactArea contactclass={'wpo-contact-area3'} />
 </div>
-            <TestSlider2 testclass={'wpo-testimonial-area-3'}/>
+           
             <FaqSection/>
             <Footer2 Ftclass={'wpo-footer-area3'} />
         </Fragment>

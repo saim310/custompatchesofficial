@@ -4,6 +4,8 @@ import Breadcrumbs from '../../components/Breadcrumbs'
 import ContactPageSec from '../../components/ContactPageSec'
 import Footer2 from '../../components/Footer2'
 import Head from 'next/head'
+import Navbar3 from '../../components/Navbar3';
+import ContactHeaderBanner from '../../components/ContactHeaderBanner';
 
 const ContactPage =() => {
     return(
@@ -11,8 +13,9 @@ const ContactPage =() => {
             <Head>
                 <title>Contact</title>
             </Head>
-            <Navbar5/>
-            <Breadcrumbs pageTitle={'Contact Us'} pageSub={'Contact'}/>
+            <Navbar3/>
+            <ContactHeaderBanner/>
+
             <ContactPageSec/>
             <Footer2 Ftclass={'wpo-footer-area3'}/>
         </Fragment>

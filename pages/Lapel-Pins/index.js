@@ -9,7 +9,7 @@ import CustomLapelPatchFinishingTabs from '../../components/CustomLapelPatchFini
 import AboutValuesSection from '../../components/AboutValuesSection';
 import ContactArea from '../../components/ContactArea';
 import CustomLapelWhyChooseUsSection from '../../components/CustomLapelWhyChooseUsSection';
-import Testimonial2 from '../../components/Testimonial2';
+
 import CustomLapelGalleryShowcase from '../../components/CustomLapelGalleryShowcase';
 import CustomLapelFAQAccordion from '../../components/CustomLapelFAQAccordion';
 
@@ -28,7 +28,7 @@ const CustomLapelPins =() => {
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>
-              <Testimonial2/>
+            
               <CustomLapelFAQAccordion/>
             <Footer2 Ftclass={'wpo-footer-area3'} />
           

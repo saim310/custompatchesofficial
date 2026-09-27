@@ -1,8 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import RequirementModal from '../RequirementModal';
+
 
 const EmbroideredHeaderBanner = () => {
     const sectionRef = useRef(null);
+     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -180,32 +183,22 @@ const EmbroideredHeaderBanner = () => {
                         <span className="badge-about">Embroidered Patches</span>
 
                         <h1 className="main-heading">
-                            Mastering Texture and Density for Your Custom<span className="brand-red">Embroidered Patches</span>
+                            Mastering Texture and Density for Your Custom<span className="brand-red"> Embroidered Patches </span>
                         </h1>
 
                         <p className="sub-heading">
- Create premium <a href="/Embroidered-Patches">embroidered patches</a> with detailed stitching, rich colors, and a professional textured finish. From logos and uniforms to fashion and team apparel, we turn your artwork into durable embroidered patches designed to make your brand, team, or organization stand out.                        </p>
+ Create premium <a href="/Embroidered-Patches"> embroidered patches </a> with detailed stitching, rich colors, and a professional textured finish. From logos and uniforms to fashion and team apparel, we turn your artwork into durable embroidered patches designed to make your brand, team, or organization stand out.                        </p>
 
-                        <div className="stats-grid">
-                            <div className="stat-card">
-                                <span className="stat-number">10K+</span>
-                                <span className="stat-label">Happy Clients</span>
-                            </div>
+                               {/* Action Button */}
+                        <div>
+                             <button 
+                                    type="button" 
+                                    className="theme-btn-s2" 
+                                    onClick={() => setIsModalOpen(true)}
+                                >
+                                    Get A Quote
+                                </button>
 
-                            <div className="stat-card">
-                                <span className="stat-number">9</span>
-                                <span className="stat-label">Total Categories</span>
-                            </div>
-
-                            <div className="stat-card stat-card-red">
-                                <span className="stat-number red-text">100%</span>
-                                <span className="stat-label">Quality Verified</span>
-                            </div>
-
-                            <div className="stat-card">
-                                <span className="stat-number">0$</span>
-                                <span className="stat-label">Setup Fees</span>
-                            </div>
                         </div>
                     </div>
 
@@ -218,6 +211,12 @@ const EmbroideredHeaderBanner = () => {
                     </div>
                 </div>
             </div>
+            {/* Slide-in Requirement Modal Component */}
+            <RequirementModal
+             isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+                />
+
         </section>
     );
 };

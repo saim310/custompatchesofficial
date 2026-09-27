@@ -1,10 +1,13 @@
-import React from 'react'
-import Link from 'next/link'
-import MobileMenu from '../MobileMenu'
+import React, { useState } from 'react';
+import Link from 'next/link';
+import MobileMenu from '../MobileMenu';
+import RequirementModal from '../RequirementModal';
 
 const HeaderAlter = (props) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return( 
-    <div className={`header-style-1 ${props.headerclass}`}>
+    <div className={`header-style-1 ${props.headerclass || ''}`}>
         <style jsx>{`
             /* Modern Flexbox Header Override */
             .header-style-1 .container {
@@ -67,6 +70,8 @@ const HeaderAlter = (props) => {
                 white-space: nowrap;
                 transition: all 0.3s ease;
                 box-shadow: 0 4px 15px rgba(254, 62, 87, 0.3);
+                border: none;
+                cursor: pointer;
             }
             .header-style-1 .inquire-btn:hover {
                 background-color: #e02e46;
@@ -74,12 +79,23 @@ const HeaderAlter = (props) => {
                 transform: translateY(-2px);
                 box-shadow: 0 6px 20px rgba(254, 62, 87, 0.4);
             }
+
+            /* Mobile Overrides: Center Logo & Clean Header */
             @media (max-width: 991px) {
+                .header-style-1 .header-content {
+                    justify-content: center; /* Center items on mobile */
+                    position: relative;
+                    min-height: 70px;
+                }
                 .header-style-1 .contact {
-                    display: none;
+                    display: none !important;
+                }
+                .header-style-1 .logo {
+                    margin: 0 auto !important;
                 }
             }
         `}</style>
+        
         <div className="container">
             <div className="header-content">
                 <div className="logo">
@@ -89,7 +105,7 @@ const HeaderAlter = (props) => {
                     <ul>
                         <li><Link legacyBehavior className="active" href="/" title="">Home</Link></li>
                         <li><Link legacyBehavior href="/AboutPage" title="">About</Link></li>
-                        <li><Link legacyBehavior href="/Embroidered-Patches">Custom Products</Link>
+                        <li><Link legacyBehavior href="/CustomProducts">Custom Products</Link>
                             <ul>
                                 <li><Link legacyBehavior href="/Embroidered-Patches">Embroidered Patches</Link></li>
                                 <li><Link legacyBehavior href="/PVC-Patches">PVC Patches</Link></li>
@@ -109,18 +125,28 @@ const HeaderAlter = (props) => {
                 <div className="contact">
                     <div className="cart-search-contact">
                         <div className="get-number">
-                            <Link legacyBehavior href="/ContactPage">+(888) 01234567</Link>
+                            <Link legacyBehavior href="tel:+18067154411">+1(806) 715-4411</Link>
                         </div>
-                        {/* Updated to link to the contact section ID */}
-                        <Link legacyBehavior href="#contact-section">
-                            <a className="inquire-btn">Inquire Now</a>
-                        </Link>
+                        {/* Trigger button for the slide-in modal */}
+                        <button 
+                            type="button" 
+                            className="inquire-btn" 
+                            onClick={() => setIsModalOpen(true)}
+                        >
+                            Get a Quote
+                        </button>
                     </div>
                 </div>
                 <div className="clearfix"></div>
             </div>
             <MobileMenu/>
         </div>
+
+        {/* Slide-in Requirement Modal Component */}
+        <RequirementModal 
+            isOpen={isModalOpen} 
+            onClose={() => setIsModalOpen(false)} 
+        />
     </div>
     )
 }

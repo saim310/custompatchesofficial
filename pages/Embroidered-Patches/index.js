@@ -28,7 +28,7 @@ const EmbroideredPatches =() => {
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>
-              <Testimonial2/>
+             
               <EmbroideredFAQAccordion/>
             <Footer2 Ftclass={'wpo-footer-area3'} />
           

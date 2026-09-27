@@ -1,11 +1,7 @@
-import React, {useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import RequirementModal from '../RequirementModal';
+import React, { useEffect, useRef } from 'react';
 
-const EmbroideredHeaderBanner = () => {
+const ContactHeaderBanner = () => {
     const sectionRef = useRef(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -35,10 +31,12 @@ const EmbroideredHeaderBanner = () => {
                     position: relative;
                     width: 100%;
                     min-height: 520px;
-                    padding: 60px 0;
+                    padding: 90px 0;
                     display: flex;
                     align-items: center;
-                    background: #f8fafc;
+                    background: 
+                        linear-gradient(180deg, rgba(241, 245, 249, 0.92) 0%, rgba(226, 232, 240, 0.96) 100%),
+                        url('images/patch-bg-mosaic.jpg') center/cover no-repeat;
                     color: #0f172a;
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
                     opacity: 0;
@@ -47,7 +45,6 @@ const EmbroideredHeaderBanner = () => {
                                 transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
                     box-sizing: border-box;
                     border-bottom: 1px solid #e2e8f0;
-                    overflow: hidden;
                 }
 
                 .humble-beginnings-section.animate-in {
@@ -56,22 +53,15 @@ const EmbroideredHeaderBanner = () => {
                 }
 
                 .container {
-                    max-width: 1280px;
+                    max-width: 1200px;
                     margin: 0 auto;
                     padding: 0 24px;
                     width: 100%;
                 }
 
-                .banner-grid {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 40px;
-                    align-items: center;
-                }
-
                 .badge-about {
                     display: inline-block;
-                    border: 1px solid rgba(220, 38, 38, 0.3);
+                    border: 1px solid rgba(220, 38, 38, 0.5);
                     color: #dc2626;
                     font-size: 11px;
                     font-weight: 500;
@@ -80,15 +70,16 @@ const EmbroideredHeaderBanner = () => {
                     padding: 5px 16px;
                     border-radius: 20px;
                     margin-bottom: 24px;
-                    background: rgba(220, 38, 38, 0.05);
+                    background: rgba(220, 38, 38, 0.06);
                 }
 
                 .main-heading {
-                    font-size: 38px;
-                    font-weight: 500;
+                    font-size: 42px;
+                    font-weight: 400;
                     line-height: 1.25;
+                    max-width: 840px;
                     color: #0f172a;
-                    margin: 0 0 16px 0;
+                    margin: 0 0 20px 0;
                     letter-spacing: -0.3px;
                 }
 
@@ -100,24 +91,32 @@ const EmbroideredHeaderBanner = () => {
                 .sub-heading {
                     font-size: 15px;
                     color: #475569;
-                    line-height: 1.6;
-                    margin: 0 0 32px 0;
+                    max-width: 650px;
+                    line-height: 1.7;
+                    margin: 0 0 44px 0;
                     font-weight: 300;
                 }
 
                 .stats-grid {
-                    display: grid;
-                    grid-template-columns: repeat(4, 1fr);
-                    gap: 12px;
+                    display: flex;
+                    gap: 16px;
+                    flex-wrap: wrap;
                 }
 
                 .stat-card {
                     background: #ffffff;
                     border: 1px solid #cbd5e1;
-                    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+                    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
                     border-radius: 12px;
-                    padding: 14px 16px;
+                    padding: 16px 24px;
+                    min-width: 135px;
                     transition: all 0.3s ease;
+                }
+
+                .stat-card:hover {
+                    border-color: rgba(220, 38, 38, 0.5);
+                    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+                    transform: translateY(-2px);
                 }
 
                 .stat-card-red {
@@ -126,8 +125,8 @@ const EmbroideredHeaderBanner = () => {
                 }
 
                 .stat-number {
-                    font-size: 20px;
-                    font-weight: 700;
+                    font-size: 22px;
+                    font-weight: 600;
                     color: #0f172a;
                     display: block;
                     margin-bottom: 2px;
@@ -138,87 +137,59 @@ const EmbroideredHeaderBanner = () => {
                 }
 
                 .stat-label {
-                    font-size: 10px;
-                    font-weight: 600;
+                    font-size: 11px;
+                    font-weight: 500;
                     color: #64748b;
-                    letter-spacing: 0.5px;
+                    letter-spacing: 1px;
                     text-transform: uppercase;
                 }
 
-                .banner-image-wrap {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%;
-                }
-
-                .banner-image-wrap img {
-                    width: 100% !important;
-                    height: auto !important;
-                    max-width: 580px !important;
-                    object-fit: contain !important;
-                }
-
-                @media (max-width: 991px) {
-                    .banner-grid {
-                        grid-template-columns: 1fr;
-                        gap: 32px;
-                    }
+                @media (max-width: 768px) {
                     .main-heading {
                         font-size: 30px;
                     }
                     .stats-grid {
+                        display: grid;
                         grid-template-columns: repeat(2, 1fr);
-                    }
-                    .banner-image-wrap {
-                        justify-content: center;
                     }
                 }
             `}</style>
 
-     <div className="container">
-    <div className="banner-grid">
-        {/* Left Column: Content */}
-        <div className="content-col">
-            <span className="badge-about">Sublimated Patches</span>
+            <div className="container">
+                <span className="badge-about">Contact Us</span>
 
-            <h1 className="main-heading">
-                Capturing photorealistic details and gradients for your custom <span className="brand-red">Sublimated Patches</span>
-            </h1>
+                <h1 className="main-heading">
+                    Get in touch with our team for your <span className="brand-red">Custom Patches</span>
+                </h1>
 
-            <p className="sub-heading">
-                Built with advanced dye-sublimation printing, seamless color blending, and zero setup fees. Turn your complex artwork and photography into vibrant physical emblems.
-            </p>
-      
+                <p className="sub-heading">
+                    Have questions about artwork requirements, pricing, bulk orders, or tracking an existing shipment? Reach out and our support team will assist you right away.
+                </p>
 
-                    {/* Action Button */}
-                        <div>
-                             <button 
-                                    type="button" 
-                                    className="theme-btn-s2" 
-                                    onClick={() => setIsModalOpen(true)}
-                                >
-                                    Get A Quote
-                                </button>
-
-                        </div>
+                <div className="stats-grid">
+                    <div className="stat-card">
+                        <span className="stat-number">24/7</span>
+                        <span className="stat-label">Support Team</span>
                     </div>
 
-                    {/* Right Column: Patch Collage Graphics */}
-                    <div className="banner-image-wrap">
-                        <img 
-                            src="/images/embroidered-banner.png" 
-                            alt="Embroidered Patches Samples" 
-                        />
+                    <div className="stat-card">
+                        <span className="stat-number">Fast</span>
+                        <span className="stat-label">Response Time</span>
+                    </div>
+
+                    <div className="stat-card stat-card-red">
+                        <span className="stat-number red-text">Free</span>
+                        <span className="stat-label">Price Quotes</span>
+                    </div>
+
+                    <div className="stat-card">
+                        <span className="stat-number">Expert</span>
+                        <span className="stat-label">Assistance</span>
                     </div>
                 </div>
             </div>
-                  <RequirementModal
-             isOpen={isModalOpen} 
-                onClose={() => setIsModalOpen(false)} 
-                />
         </section>
     );
 };
 
-export default EmbroideredHeaderBanner;
+export default ContactHeaderBanner;

@@ -1,10 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import RequirementModal from '../RequirementModal'; // Adjust path if needed
 
-const WovenHeaderBanner = () => {
+const CustomProductsHeaderBanner = () => {
     const sectionRef = useRef(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -28,29 +26,29 @@ const WovenHeaderBanner = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className="humble-beginnings-section">
+        <section ref={sectionRef} className="custom-products-banner-section">
             <style jsx>{`
-                .humble-beginnings-section {
+                .custom-products-banner-section {
                     position: relative;
                     width: 100%;
-                    margin-top: 0px;
-                    min-height: 520px;
-                    padding: 50px 0;
+                    margin-top: 40px; /* Added gap between navbar and banner */
+                    padding: 45px 0;
                     display: flex;
                     align-items: center;
                     background: #f8fafc;
                     color: #0f172a;
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
                     opacity: 0;
-                    transform: translateY(30px);
+                    transform: translateY(20px);
                     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                                 transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
                     box-sizing: border-box;
+                    border-top: 1px solid #e2e8f0;
                     border-bottom: 1px solid #e2e8f0;
                     overflow: hidden;
                 }
 
-                .humble-beginnings-section.animate-in {
+                .custom-products-banner-section.animate-in {
                     opacity: 1;
                     transform: translateY(0);
                 }
@@ -64,37 +62,22 @@ const WovenHeaderBanner = () => {
 
                 .banner-grid {
                     display: grid;
-                    grid-template-columns: 1fr 1fr;
+                    grid-template-columns: 1.1fr 0.9fr;
                     gap: 40px;
                     align-items: center;
                 }
 
-                .badge-about {
-                    display: inline-block;
-                    border: 1px solid rgba(220, 38, 38, 0.3);
-                    color: #dc2626;
-                    font-size: 11px;
-                    font-weight: 500;
-                    letter-spacing: 2px;
-                    text-transform: uppercase;
-                    padding: 5px 16px;
-                    border-radius: 20px;
-                    margin-bottom: 20px;
-                    background: rgba(220, 38, 38, 0.05);
-                }
-
                 .main-heading {
                     font-size: 38px;
-                    font-weight: 500;
-                    line-height: 1.25;
+                    font-weight: 700;
+                    line-height: 1.2;
                     color: #0f172a;
                     margin: 0 0 16px 0;
-                    letter-spacing: -0.3px;
+                    letter-spacing: -0.5px;
                 }
 
                 .brand-red {
                     color: #dc2626;
-                    font-weight: 600;
                 }
 
                 .sub-heading {
@@ -102,7 +85,7 @@ const WovenHeaderBanner = () => {
                     color: #475569;
                     line-height: 1.6;
                     margin: 0 0 30px 0;
-                    font-weight: 300;
+                    font-weight: 400;
                     max-width: 600px;
                 }
 
@@ -119,8 +102,6 @@ const WovenHeaderBanner = () => {
                     font-weight: 600;
                     padding: 12px 30px;
                     border-radius: 50px;
-                    border: none;
-                    cursor: pointer;
                     text-decoration: none;
                     transition: all 0.3s ease;
                     box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
@@ -143,20 +124,20 @@ const WovenHeaderBanner = () => {
                 .banner-image-wrap img {
                     width: 100% !important;
                     height: auto !important;
-                    max-width: 580px !important;
+                    max-width: 500px !important;
                     object-fit: contain !important;
                 }
 
                 @media (max-width: 991px) {
-                    .humble-beginnings-section {
-                        margin-top: 0px;
+                    .custom-products-banner-section {
+                        margin-top: 24px;
                     }
                     .banner-grid {
                         grid-template-columns: 1fr;
-                        gap: 32px;
+                        gap: 28px;
                     }
                     .main-heading {
-                        font-size: 30px;
+                        font-size: 28px;
                     }
                     .banner-image-wrap {
                         justify-content: center;
@@ -168,46 +149,33 @@ const WovenHeaderBanner = () => {
                 <div className="banner-grid">
                     {/* Left Column: Content */}
                     <div className="content-col">
-                        <span className="badge-about">Woven Patches</span>
-
                         <h1 className="main-heading">
-                            Detailed Custom <span className="brand-red">Woven Patches</span> Made for Every Style
+                            Explore Materials, Colors & <span className="brand-red">Crafting Specs</span>
                         </h1>
 
                         <p className="sub-heading">
-                            Create clean and detailed <a href="/Woven-Patches"><b>custom woven patches</b></a> with a smooth, lightweight finish. Woven patches are ideal for logos, small lettering, intricate artwork, and branding where fine details matter. Customize your patch with your preferred shape, size, colors, and backing to create a professional design for clothing, uniforms, hats, bags, and accessories.
+                            Discover our comprehensive library of threads, fabrics, pantone color charts, and application instructions. Everything you need to inspect, verify, and design your custom patches and accessories with precision.
                         </p>
 
                         {/* Action Button */}
-                        <div>
-                             <button 
-                                    type="button" 
-                                    className="theme-btn-s2" 
-                                    onClick={() => setIsModalOpen(true)}
-                                >
-                                    Get A Quote
-                                </button>
-
+                        <div className="banner-cta-wrap">
+                            <a href="/contact" className="btn-get-quote">
+                                Get a Quote
+                            </a>
                         </div>
                     </div>
 
-                    {/* Right Column: Patch Collage Graphics */}
+                    {/* Right Column: Graphics / Illustration */}
                     <div className="banner-image-wrap">
                         <img 
-                            src="/images/embroidered-banner.png" 
-                            alt="Woven Patches Samples" 
+                            src="/images/CustomerList.png" 
+                            alt="Custom Products Resources & Threads" 
                         />
                     </div>
                 </div>
             </div>
-
-            {/* Slide-in Requirement Modal Component */}
-            <RequirementModal 
-                isOpen={isModalOpen} 
-                onClose={() => setIsModalOpen(false)} 
-            />
         </section>
     );
 };
 
-export default WovenHeaderBanner;
+export default CustomProductsHeaderBanner;

@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import RequirementModal from '../RequirementModal';
 
 const EmbroideredHeaderBanner = () => {
     const sectionRef = useRef(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -187,26 +189,16 @@ const EmbroideredHeaderBanner = () => {
                             Make a lasting impression with premium custom lapel pins featuring clean metal detailing, vibrant enamel colors, and polished finishes. Perfect for corporate branding, employee recognition, military service, events, clubs, and fashion accessories, lapel pins offer a sophisticated touch. Customize your pin with your logo, shape, plating, and backing clutch.
                         </p>
 
-                        <div className="stats-grid">
-                            <div className="stat-card">
-                                <span className="stat-number">10K+</span>
-                                <span className="stat-label">Happy Clients</span>
-                            </div>
+               {/* Action Button */}
+                        <div>
+                             <button 
+                                    type="button" 
+                                    className="theme-btn-s2" 
+                                    onClick={() => setIsModalOpen(true)}
+                                >
+                                    Get A Quote
+                                </button>
 
-                            <div className="stat-card">
-                                <span className="stat-number">9</span>
-                                <span className="stat-label">Total Categories</span>
-                            </div>
-
-                            <div className="stat-card stat-card-red">
-                                <span className="stat-number red-text">100%</span>
-                                <span className="stat-label">Quality Verified</span>
-                            </div>
-
-                            <div className="stat-card">
-                                <span className="stat-number">0$</span>
-                                <span className="stat-label">Setup Fees</span>
-                            </div>
                         </div>
                     </div>
 
@@ -219,6 +211,10 @@ const EmbroideredHeaderBanner = () => {
                     </div>
                 </div>
             </div>
+                  <RequirementModal
+             isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+                />
         </section>
     );
 };

@@ -13,6 +13,7 @@ import '../styles/globals.css';
 import '../styles/style.css';
 import '../styles/responsive.css';
 import FloatingContactWidget from '../components/FloatingContactWidget';
+import QuoteFloatingWidget from '../components/QuoteFloatingWidget';
 
 function MyApp({ Component, pageProps }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +27,13 @@ function MyApp({ Component, pageProps }) {
     <>
     <FloatingContactWidget/>
       <Component {...pageProps} />
-      <RequirementModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+  {/* Floating Widget */}
+            <QuoteFloatingWidget onOpenModal={() => setIsModalOpen(true)} />
+
+            {/* Requirement Modal Component */}
+            {isModalOpen && (
+                <RequirementModal onClose={() => setIsModalOpen(false)} />
+            )}
     </>
   );
 }

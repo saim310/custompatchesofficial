@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const EmbroideredPatchFinishingTabs = () => {
     const [activeTab, setActiveTab] = useState('backing');
+    const [currentIndex, setCurrentIndex] = useState(0);
     const sectionRef = useRef(null);
+    const sliderRef = useRef(null);
 
     const contentData = {
         backing: {
@@ -47,8 +49,7 @@ const EmbroideredPatchFinishingTabs = () => {
                     title: 'Cotton Twill',
                     description: 'High-visibility safety fabric engineered to shine brightly under direct light sources at night.',
                     image: '/images/embroidered-cotton.webp'
-                },
-                
+                }
             ]
         },
         borders: {
@@ -73,6 +74,14 @@ const EmbroideredPatchFinishingTabs = () => {
         }
     };
 
+    // Reset slider scroll and index when tab changes
+    useEffect(() => {
+        setCurrentIndex(0);
+        if (sliderRef.current) {
+            sliderRef.current.scrollLeft = 0;
+        }
+    }, [activeTab]);
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -91,6 +100,28 @@ const EmbroideredPatchFinishingTabs = () => {
 
         return () => observer.disconnect();
     }, []);
+
+    const scrollToCard = (index) => {
+        setCurrentIndex(index);
+        if (sliderRef.current) {
+            const cardWidth = sliderRef.current.querySelector('.finishing-card').offsetWidth + 16; // width + gap
+            sliderRef.current.scrollTo({
+                left: cardWidth * index,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    const handleScroll = () => {
+        if (sliderRef.current) {
+            const scrollLeft = sliderRef.current.scrollLeft;
+            const cardWidth = sliderRef.current.querySelector('.finishing-card').offsetWidth + 16;
+            const newIndex = Math.round(scrollLeft / cardWidth);
+            setCurrentIndex(newIndex);
+        }
+    };
+
+    const currentItems = contentData[activeTab].items;
 
     return (
         <section ref={sectionRef} className="finishing-section">
@@ -178,34 +209,20 @@ const EmbroideredPatchFinishingTabs = () => {
                 .section-subtitle {
                     font-size: 15px;
                     color: #64748b;
-                    margin: 0 0 50px 0;
+                    margin: 0 0 40px 0;
                     font-weight: 300;
                 }
 
-                /* Cards Grid */
+                /* Cards Grid / Slider Wrapper */
+                .cards-container {
+                    position: relative;
+                }
+
                 .cards-grid {
                     display: grid;
                     grid-template-columns: repeat(4, 1fr);
                     gap: 24px;
                     text-align: left;
-                }
-
-                @media (max-width: 1024px) {
-                    .cards-grid {
-                        grid-template-columns: repeat(2, 1fr);
-                    }
-                }
-
-                @media (max-width: 640px) {
-                    .cards-grid {
-                        grid-template-columns: 1fr;
-                    }
-                    .tabs-nav {
-                        display: flex;
-                        flex-direction: column;
-                        border-radius: 20px;
-                        width: 100%;
-                    }
                 }
 
                 .finishing-card {
@@ -219,6 +236,7 @@ const EmbroideredPatchFinishingTabs = () => {
                     align-items: center;
                     text-align: center;
                     transition: all 0.3s ease;
+                    flex-shrink: 0;
                 }
 
                 .finishing-card:hover {
@@ -262,6 +280,80 @@ const EmbroideredPatchFinishingTabs = () => {
                     font-weight: 300;
                     margin: 0;
                 }
+
+                /* Slider Navigation Dots (Mobile / Tablet Only) */
+                .slider-dots {
+                    display: none;
+                    justify-content: center;
+                    gap: 8px;
+                    margin-top: 24px;
+                }
+
+                .dot {
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: #cbd5e1;
+                    border: none;
+                    padding: 0;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                .dot.active {
+                    background: #801313;
+                    width: 24px;
+                    border-radius: 4px;
+                }
+
+                /* Responsive Breakpoints */
+                @media (max-width: 1024px) {
+                    .cards-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .cards-container {
+                        overflow: hidden;
+                        margin: 0 -24px;
+                        padding: 0 24px;
+                    }
+
+                    .cards-grid {
+                        display: flex;
+                        overflow-x: auto;
+                        scroll-snap-type: x mandatory;
+                        scroll-behavior: smooth;
+                        gap: 16px;
+                        padding-bottom: 8px;
+                        scrollbar-width: none; /* Firefox */
+                        -ms-overflow-style: none; /* IE/Edge */
+                    }
+
+                    .cards-grid::-webkit-scrollbar {
+                        display: none; /* Chrome/Safari */
+                    }
+
+                    .finishing-card {
+                        width: 85%;
+                        min-width: 280px;
+                        scroll-snap-align: center;
+                    }
+
+                    .slider-dots {
+                        display: flex;
+                    }
+                }
+
+                @media (max-width: 640px) {
+                    .tabs-nav {
+                        display: flex;
+                        flex-direction: column;
+                        border-radius: 20px;
+                        width: 100%;
+                    }
+                }
             `}</style>
 
             <div className="container">
@@ -291,16 +383,30 @@ const EmbroideredPatchFinishingTabs = () => {
 
                 <p className="section-subtitle">{contentData[activeTab].subtitle}</p>
 
-                <div className="cards-grid">
-                    {contentData[activeTab].items.map((item, index) => (
-                        <div key={index} className="finishing-card">
-                            <div className="card-image-wrap">
-                                <img src={item.image} alt={item.title} />
+                <div className="cards-container">
+                    <div className="cards-grid" ref={sliderRef} onScroll={handleScroll}>
+                        {currentItems.map((item, index) => (
+                            <div key={index} className="finishing-card">
+                                <div className="card-image-wrap">
+                                    <img src={item.image} alt={item.title} />
+                                </div>
+                                <h3 className="card-title">{item.title}</h3>
+                                <p className="card-desc">{item.description}</p>
                             </div>
-                            <h3 className="card-title">{item.title}</h3>
-                            <p className="card-desc">{item.description}</p>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
+
+                    {/* Pagination Dots for Mobile Slider */}
+                    <div className="slider-dots">
+                        {currentItems.map((_, index) => (
+                            <button
+                                key={index}
+                                className={`dot ${currentIndex === index ? 'active' : ''}`}
+                                onClick={() => scrollToCard(index)}
+                                aria-label={`Go to slide ${index + 1}`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

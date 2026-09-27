@@ -16,9 +16,10 @@ const Footer2 = (props) => {
                             <div className="wpo-footer-menu">
                                 <ul>
                                     <li><Link legacyBehavior href="/AboutPage">About</Link></li>
-                                    <li><Link legacyBehavior href="/PorfolioGrid">Portfolio</Link></li>
+                                    <li><Link legacyBehavior href="/CustomProducts">Custom Products</Link></li>
                                     <li><Link legacyBehavior href="/BlogPage">Blog</Link></li>
                                     <li><Link legacyBehavior href="/ContactPage">Contact</Link></li>
+                                    <li><Link legacyBehavior href="/FAQs">FAQs</Link></li>
                                 </ul>
                             </div>
                         </div>

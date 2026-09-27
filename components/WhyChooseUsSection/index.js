@@ -148,6 +148,24 @@ const PatchTypeVisualizer = () => {
                     color: #475569;
                     margin-bottom: 8px;
                 }
+
+                .spec-bar {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 12px;
+                    background: #f8fafc;
+                    padding: 20px;
+                    border-radius: 16px;
+                    border: 1px solid #e2e8f0;
+                }
+
+                /* Mobile Responsive Fix for Spec Bar */
+                @media (max-width: 768px) {
+                    .spec-bar {
+                        grid-template-columns: 1fr;
+                        gap: 16px;
+                    }
+                }
             `}</style>
 
             <div className="container">
@@ -219,15 +237,7 @@ const PatchTypeVisualizer = () => {
                                 </div>
 
                                 {/* Spec Bar */}
-                                <div style={{ 
-                                    display: 'grid', 
-                                    gridTemplateColumns: 'repeat(3, 1fr)', 
-                                    gap: '12px', 
-                                    background: '#f8fafc', 
-                                    padding: '20px', 
-                                    borderRadius: '16px', 
-                                    border: '1px solid #e2e8f0' 
-                                }}>
+                                <div className="spec-bar">
                                     <div>
                                         <span style={{ fontSize: '11px', color: '#94a3b8', textTransform: 'uppercase', fontWeight: '700', display: 'block' }}>Turnaround</span>
                                         <strong style={{ fontSize: '13px', color: '#0f172a' }}>{currentData.turnaround}</strong>
@@ -238,7 +248,7 @@ const PatchTypeVisualizer = () => {
                                     </div>
                                     <div>
                                         <span style={{ fontSize: '11px', color: '#94a3b8', textTransform: 'uppercase', fontWeight: '700', display: 'block' }}>Ideal For</span>
-                                        <strong style={{ fontSize: '13px', color: '#0f172a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'block' }}>
+                                        <strong style={{ fontSize: '13px', color: '#0f172a', display: 'block' }}>
                                             {currentData.bestFor}
                                         </strong>
                                     </div>

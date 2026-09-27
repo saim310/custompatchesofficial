@@ -9,7 +9,7 @@ import SublimatedPatchFinishingTabs from '../../components/SublimatedPatchFinish
 import AboutValuesSection from '../../components/AboutValuesSection';
 import ContactArea from '../../components/ContactArea';
 import SublimatedWhyChooseUsSection from '../../components/SublimatedWhyChooseUsSection';
-import Testimonial2 from '../../components/Testimonial2';
+
 import SublimatedGalleryShowcase from '../../components/SublimatedGalleryShowcase';
 import SublimatedFAQAccordion from '../../components/SublimatedFAQAccordion';
 
@@ -28,7 +28,7 @@ const SublimatedPatches =() => {
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>
-              <Testimonial2/>
+          
               <SublimatedFAQAccordion/>
             <Footer2 Ftclass={'wpo-footer-area3'} />
           

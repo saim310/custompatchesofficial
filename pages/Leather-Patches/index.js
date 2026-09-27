@@ -9,7 +9,7 @@ import LeatherPatchFinishingTabs from '../../components/LeatherPatchFinishingTab
 import AboutValuesSection from '../../components/AboutValuesSection';
 import ContactArea from '../../components/ContactArea';
 import LeatherWhyChooseUsSection from '../../components/LeatherWhyChooseUsSection';
-import Testimonial2 from '../../components/Testimonial2';
+
 import LeatherGalleryShowcase from '../../components/LeatherGalleryShowcase';
 import LeatherFAQAccordion from '../../components/LeatherFAQAccordion';
 
@@ -28,7 +28,7 @@ const LeatherPatches =() => {
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>
-              <Testimonial2/>
+         
               <LeatherFAQAccordion/>
             <Footer2 Ftclass={'wpo-footer-area3'} />
           

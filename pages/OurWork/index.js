@@ -11,7 +11,7 @@ const OurWork =() => {
     return(
         <Fragment>
             <Head>
-                <title>About Page</title>
+                <title>Our Work</title>
             </Head>
             <Navbar3/>
             <OurWorkHeaderBanner/>

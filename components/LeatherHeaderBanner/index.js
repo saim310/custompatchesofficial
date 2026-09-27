@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import RequirementModal from '../RequirementModal';
 
 const EmbroideredHeaderBanner = () => {
     const sectionRef = useRef(null);
+        const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -180,32 +182,22 @@ const EmbroideredHeaderBanner = () => {
                         <span className="badge-about">Leather Patches</span>
 
                         <h1 className="main-heading">
-                            Premium Custom<span className="brand-red">Leather Patches</span>Made for Your Brand 
+                            Premium Custom<span className="brand-red"> Leather Patches </span>Made for Your Brand 
                         </h1>
 
                         <p className="sub-heading">
 Give your apparel and products a premium look with high-quality <a href="/Leather-Patches"><b>custom leather patches</b></a>. Designed with clean detailing and a durable finish, leather patches are perfect for hats, jackets, bags, jeans, footwear, and branded merchandise. Customize your patch with your logo, text, shape, size, and preferred leather finish to create a distinctive design.                        </p>
 
-                        <div className="stats-grid">
-                            <div className="stat-card">
-                                <span className="stat-number">10K+</span>
-                                <span className="stat-label">Happy Clients</span>
-                            </div>
+                                      {/* Action Button */}
+                        <div>
+                             <button 
+                                    type="button" 
+                                    className="theme-btn-s2" 
+                                    onClick={() => setIsModalOpen(true)}
+                                >
+                                    Get A Quote
+                                </button>
 
-                            <div className="stat-card">
-                                <span className="stat-number">9</span>
-                                <span className="stat-label">Total Categories</span>
-                            </div>
-
-                            <div className="stat-card stat-card-red">
-                                <span className="stat-number red-text">100%</span>
-                                <span className="stat-label">Quality Verified</span>
-                            </div>
-
-                            <div className="stat-card">
-                                <span className="stat-number">0$</span>
-                                <span className="stat-label">Setup Fees</span>
-                            </div>
                         </div>
                     </div>
 
@@ -218,6 +210,10 @@ Give your apparel and products a premium look with high-quality <a href="/Leathe
                     </div>
                 </div>
             </div>
+                  <RequirementModal
+             isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+                />
         </section>
     );
 };

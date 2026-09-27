@@ -9,7 +9,7 @@ import ChenillePatchFinishingTabs from '../../components/ChenillePatchFinishingT
 import AboutValuesSection from '../../components/AboutValuesSection';
 import ContactArea from '../../components/ContactArea';
 import ChenilleWhyChooseUsSection from '../../components/ChenilleWhyChooseUsSection';
-import Testimonial2 from '../../components/Testimonial2';
+
 import ChenilleGalleryShowcase from '../../components/ChenilleGalleryShowcase';
 import ChenilleFAQAccordion from '../../components/ChenilleFAQAccordion';
 
@@ -28,7 +28,7 @@ const ChenillePatches =() => {
             <MySkill/>
             <AboutValuesSection/>
               <ContactArea contactclass={'wpo-contact-area3'}/>
-              <Testimonial2/>
+             
               <ChenilleFAQAccordion/>
             <Footer2 Ftclass={'wpo-footer-area3'} />
           
