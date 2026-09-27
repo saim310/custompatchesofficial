@@ -119,7 +119,21 @@ const Hero3 = ( props ) => {
                     }
                 }
 
-                /* Mobile Layout Fix: Force Stack Row and Image on Top */
+                /* Desktop View: Force Text Left (order 1) and Image Right (order 2) */
+                @media (min-width: 992px) {
+                    .wpo-hero-style-3 .row {
+                        display: flex;
+                        flex-direction: row !important;
+                    }
+                    .slide-caption {
+                        order: 1 !important;
+                    }
+                    .hero-image-wrap {
+                        order: 2 !important;
+                    }
+                }
+
+                /* Mobile View: Image First, Text Second */
                 @media (max-width: 991px) {
                     .wpo-hero-style-3 {
                         padding: 30px 0 50px 0 !important;
@@ -128,12 +142,10 @@ const Hero3 = ( props ) => {
                         display: flex;
                         flex-direction: column !important;
                     }
-                    /* Image comes first */
                     .hero-image-wrap {
                         order: 1 !important;
                         margin-bottom: 20px;
                     }
-                    /* Text comes second */
                     .slide-caption {
                         order: 2 !important;
                     }
@@ -146,25 +158,14 @@ const Hero3 = ( props ) => {
             <div className="wpo-slide-wrap">
                 <div className="container">
                     <div className="row align-items-center">
-                        {/* Animated Image Column */}
-                        <div className="col col-lg-6 col-md-12 hero-image-wrap" ref={imageRef}>
-                            <Image 
-                                src="/images/patches-hero-v3-2.png" 
-                                alt="Custom Patches Home Banner" 
-                                width={1805} 
-                                height={871} 
-                                priority
-                            />
-                        </div>
-
-                        {/* Text Caption Column */}
+                        {/* Text Caption Column (Left on Desktop, Second on Mobile) */}
                         <div 
                             className="col col-lg-6 col-md-12 slide-caption hero-content-card"
                             ref={heroRef}
                         >
                             <h2>Custom Patches Design Your Own Personalized Patches</h2>
                             <span>
-                                <a href="/custom-products"><b>Custom patches</b></a> are a great way to showcase your brand, team, club, or personal style. We create high-quality <a href="/custom-products"><b>custom patches online</b></a> in different styles, including <a href="/Embroidered-Patches"><b>custom embroidered patches</b></a>, <a href="/Woven-Patches"><b>custom woven patches</b></a>, <a href="/Chenille-Patches"><b>custom chenille patches</b></a>, <a href="/PVC-Patches"><b>custom PVC patches</b></a>, <a href="/Bullet-Sublimated-Patches"><b>custom sublimated patches</b></a>, and <a href="/Leather-Patches"><b>custom leather patches</b></a>. You can choose your preferred shape, size, colors, design, and backing option. Whether you need patches for clothing, uniforms, jackets, bags, businesses, or events, our <a href="/Custom-Products"><b>personalized patches</b></a> are designed to provide a professional and distinctive look.         </span>
+                                <a href="/custom-products"><b>Custom patches</b></a> are a great way to showcase your brand, team, club, or personal style. We create high-quality <a href="/custom-products"><b>custom patches online</b></a> in different styles, including <a href="/Embroidered-Patches"><b>custom embroidered patches</b></a>, <a href="/Woven-Patches"><b>custom woven patches</b></a>, <a href="/Chenille-Patches"><b>custom chenille patches</b></a>, <a href="/PVC-Patches"><b>custom PVC patches</b></a>, <a href="/Bullet-Sublimated-Patches"><b>custom sublimated patches</b></a>, and <a href="/Leather-Patches"><b>custom leather patches</b></a>. You can choose your preferred shape, size, colors, design, and backing option. Whether you need patches for clothing, uniforms, jackets, bags, businesses, or events, our <a href="/Custom-Products"><b>personalized patches</b></a> are designed to provide a professional and distinctive look.     </span>
                             <div>
                                 <Link legacyBehavior href="/AboutPage"><a className="theme-btn">More About</a></Link>
                                 <button 
@@ -175,6 +176,17 @@ const Hero3 = ( props ) => {
                                     Get A Quote
                                 </button>
                             </div>
+                        </div>
+
+                        {/* Animated Image Column (Right on Desktop, First on Mobile) */}
+                        <div className="col col-lg-6 col-md-12 hero-image-wrap" ref={imageRef}>
+                            <Image 
+                                src="/images/patches-hero-v3-2.png" 
+                                alt="Custom Patches Home Banner" 
+                                width={1805} 
+                                height={871} 
+                                priority
+                            />
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import RequirementModal from '../RequirementModal';
 
 const AboutHeroSection = () => {
     const heroRef = useRef(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -23,6 +25,14 @@ const AboutHeroSection = () => {
 
         return () => observer.disconnect();
     }, []);
+
+    const scrollToPillars = (e) => {
+        e.preventDefault();
+        const section = document.getElementById('craft-pillars');
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return (
         <section style={{ background: '#f8fafc', padding: '100px 0 80px', color: '#0f172a' }}>
@@ -80,6 +90,8 @@ const AboutHeroSection = () => {
                     font-weight: 700;
                     font-size: 15px;
                     display: inline-block;
+                    border: none;
+                    cursor: pointer;
                     transition: all 0.3s ease;
                     box-shadow: 0 4px 14px rgba(220, 38, 38, 0.25);
                 }
@@ -100,6 +112,7 @@ const AboutHeroSection = () => {
                     font-size: 15px;
                     border: 1.5px solid #cbd5e1;
                     display: inline-block;
+                    cursor: pointer;
                     transition: all 0.3s ease;
                 }
 
@@ -122,18 +135,26 @@ const AboutHeroSection = () => {
                                 We transform your brand artwork, logos, and creative concepts into exceptionally detailed physical patches — delivered with unmatched speed, factory-direct pricing, and zero setup fees.
                             </p>
                             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                                <a href="#quote" className="primary-btn">
+                                <button 
+                                    type="button" 
+                                    className="primary-btn" 
+                                    onClick={() => setIsModalOpen(true)}
+                                >
                                     Get Free Quote & Proof →
-                                </a>
-                                <a href="#process" className="secondary-btn">
+                                </button>
+                                <button 
+                                    type="button" 
+                                    className="secondary-btn" 
+                                    onClick={scrollToPillars}
+                                >
                                     Explore Our Craft
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
 
                     {/* Value Statement Pillars */}
-                    <div className="row g-4 mt-2">
+                    <div className="row g-4 mt-2" id="craft-pillars">
                         <div className="col-md-4">
                             <div className="hero-card">
                                 <div style={{ fontSize: '28px', color: '#dc2626', marginBottom: '12px' }}>⚡</div>
@@ -172,6 +193,12 @@ const AboutHeroSection = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Requirement Modal Component */}
+            <RequirementModal 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+            />
         </section>
     );
 };
